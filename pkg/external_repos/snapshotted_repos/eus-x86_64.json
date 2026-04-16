@@ -8,7 +8,8 @@
         "feature_name": "RHEL-EUS-x86_64",
         "origin": "red_hat",
         "extended_release": "eus",
-        "extended_release_version": "9.4"
+        "extended_release_version": "9.4",
+        "selector": "eus"
     },
     {
         "name": "Red Hat Enterprise Linux 9.4 for x86_64 - BaseOS - Extended Update Support (RPMs)",
@@ -19,7 +20,8 @@
         "feature_name": "RHEL-EUS-x86_64",
         "origin": "red_hat",
         "extended_release": "eus",
-        "extended_release_version": "9.4"
+        "extended_release_version": "9.4",
+        "selector": "eus"
     },
     {
         "name": "Red Hat Enterprise Linux 9.4 for x86_64 - Supplementary - Extended Update Support (RPMs)",

@@ -2058,7 +2058,7 @@ func (suite *RepositoryConfigSuite) TestListFilterExtendedRelease() {
 		OrgID:                  orgID,
 		RepositoryUUID:         repoEUS.UUID,
 		Arch:                   config.X8664,
-		Versions:               pq.StringArray{config.El9},
+		Versions:               pq.StringArray{config.El9, "9.4"},
 		ExtendedRelease:        "eus",
 		ExtendedReleaseVersion: "9.4",
 		FeatureName:            "RHEL-EUS-x86_64",
@@ -2070,7 +2070,7 @@ func (suite *RepositoryConfigSuite) TestListFilterExtendedRelease() {
 		OrgID:                  orgID,
 		RepositoryUUID:         repoE4S.UUID,
 		Arch:                   config.X8664,
-		Versions:               pq.StringArray{config.El9},
+		Versions:               pq.StringArray{config.El9, "9.4"},
 		ExtendedRelease:        "e4s",
 		ExtendedReleaseVersion: "9.4",
 		FeatureName:            "RHEL-E4S-x86_64",
@@ -2092,7 +2092,7 @@ func (suite *RepositoryConfigSuite) TestListFilterExtendedRelease() {
 		OrgID:                  orgID,
 		RepositoryUUID:         repoEUS2.UUID,
 		Arch:                   config.X8664,
-		Versions:               pq.StringArray{config.El9},
+		Versions:               pq.StringArray{config.El9, "9.6"},
 		ExtendedRelease:        "eus",
 		ExtendedReleaseVersion: "9.6",
 		FeatureName:            "RHEL-EUS-x86_64",
@@ -2198,6 +2198,24 @@ func (suite *RepositoryConfigSuite) TestListFilterExtendedRelease() {
 	for _, repo := range response.Data {
 		assert.Contains(t, []string{"9.4", ""}, repo.ExtendedReleaseVersion)
 	}
+
+	// Test 10: Filter by version=9.4 - should return 9.4 repos
+	suite.mockPulpForListOrFetch(1)
+	suite.mockFsClient.Mock.On("GetEntitledFeatures", context.Background(), orgID).Return([]string{"RHEL-OS-x86_64", "RHEL-EUS-x86_64", "RHEL-E4S-x86_64"}, nil).Once()
+	filterData = api.FilterData{Version: "9.4", Origin: config.OriginExternal}
+	response, total, err = repoConfigDao.List(context.Background(), orgID, pageData, filterData)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(2), total)
+	assert.Equal(t, 2, len(response.Data))
+
+	// Test 10: Filter by version=9,9.4 - should return all 4 repos
+	suite.mockPulpForListOrFetch(1)
+	suite.mockFsClient.Mock.On("GetEntitledFeatures", context.Background(), orgID).Return([]string{"RHEL-OS-x86_64", "RHEL-EUS-x86_64", "RHEL-E4S-x86_64"}, nil).Once()
+	filterData = api.FilterData{Version: "9,9.4", Origin: config.OriginExternal}
+	response, total, err = repoConfigDao.List(context.Background(), orgID, pageData, filterData)
+	assert.NoError(t, err)
+	assert.Equal(t, int64(4), total)
+	assert.Equal(t, 4, len(response.Data))
 }
 
 func (suite *RepositoryConfigSuite) TestListFilterStatus() {

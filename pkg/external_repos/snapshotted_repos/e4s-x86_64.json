@@ -8,7 +8,8 @@
         "feature_name": "RHEL-E4S-x86_64",
         "origin": "red_hat",
         "extended_release": "e4s",
-        "extended_release_version": "8.6"
+        "extended_release_version": "8.6",
+        "selector": "e4s"
     },
     {
         "name": "Red Hat Enterprise Linux 8.6 for x86_64 - BaseOS - Update Services for SAP Solutions (RPMs)",
@@ -19,7 +20,8 @@
         "feature_name": "RHEL-E4S-x86_64",
         "origin": "red_hat",
         "extended_release": "e4s",
-        "extended_release_version": "8.6"
+        "extended_release_version": "8.6",
+        "selector": "e4s"
     },
     {
         "name": "Red Hat Enterprise Linux 8.8 for x86_64 - AppStream - Update Services for SAP Solutions (RPMs)",

@@ -164,6 +164,14 @@ func ValidDistributionVersionLabels(labels []string) (bool, string) {
 			}
 		}
 		if !found {
+			for i := 0; i < len(DistributionMinorVersions); i++ {
+				if DistributionMinorVersions[i].Label == labels[j] {
+					found = true
+					break
+				}
+			}
+		}
+		if !found {
 			return false, labels[j]
 		}
 	}

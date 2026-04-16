@@ -1474,6 +1474,9 @@ func ApiFieldsToModel(apiRepo api.RepositoryRequest, repoConfig *models.Reposito
 	}
 	if apiRepo.DistributionVersions != nil {
 		repoConfig.Versions = *apiRepo.DistributionVersions
+		if apiRepo.ExtendedReleaseVersion != nil && *apiRepo.ExtendedReleaseVersion != "" {
+			repoConfig.Versions = append(repoConfig.Versions, *apiRepo.ExtendedReleaseVersion)
+		}
 	}
 	if apiRepo.URL != nil {
 		repo.URL = *apiRepo.URL
