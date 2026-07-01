@@ -1,0 +1,95 @@
+---
+type: pull_request
+number: 1901
+title: "Update module github.com/klauspost/compress to v1.18.1"
+state: merged
+author: red-hat-konflux
+created: 2025-10-27T08:16:06Z
+updated: 2025-10-27T12:14:23Z
+closed: 2025-10-27T08:22:48Z
+merged: 2025-10-27T08:22:48Z
+base_branch: master
+head_branch: konflux/mintmaker/master/github.com-klauspost-compress-1.x
+labels: []
+url: https://github.com/RedHatInsights/patchman-engine/pull/1901
+---
+
+# Pull Request #1901: Update module github.com/klauspost/compress to v1.18.1
+
+**Author**: @red-hat-konflux
+**Created**: October 27, 2025 at 08:16 AM UTC
+**Status**: Merged
+**Labels**: None
+**Base**: `master` ← **Head**: `konflux/mintmaker/master/github.com-klauspost-compress-1.x`
+
+## Description
+
+This PR contains the following updates:
+
+| Package | Change | Age | Confidence |
+|---|---|---|---|
+| [github.com/klauspost/compress](https://redirect.github.com/klauspost/compress) | `v1.18.0` -> `v1.18.1` | [![age](https://developer.mend.io/api/mc/badges/age/go/github.com%2fklauspost%2fcompress/v1.18.1?slim=true)](https://docs.renovatebot.com/merge-confidence/) | [![confidence](https://developer.mend.io/api/mc/badges/confidence/go/github.com%2fklauspost%2fcompress/v1.18.0/v1.18.1?slim=true)](https://docs.renovatebot.com/merge-confidence/) |
+
+---
+
+### Release Notes
+
+<details>
+<summary>klauspost/compress (github.com/klauspost/compress)</summary>
+
+### [`v1.18.1`](https://redirect.github.com/klauspost/compress/releases/tag/v1.18.1)
+
+[Compare Source](https://redirect.github.com/klauspost/compress/compare/v1.18.0...v1.18.1)
+
+#### What's Changed
+
+- zstd: Fix incorrect buffer size in dictionary encodes by [@&#8203;klauspost](https://redirect.github.com/klauspost) in [#&#8203;1059](https://redirect.github.com/klauspost/compress/pull/1059)
+- s2: check for cap, not len of buffer in EncodeBetter/Best by [@&#8203;vdarulis](https://redirect.github.com/vdarulis) in [#&#8203;1080](https://redirect.github.com/klauspost/compress/pull/1080)
+- zstd: Add simple zstd EncodeTo/DecodeTo functions by [@&#8203;klauspost](https://redirect.github.com/klauspost) in [#&#8203;1079](https://redirect.github.com/klauspost/compress/pull/1079)
+- zlib: Avoiding extra allocation in zlib.reader.Reset by [@&#8203;travelpolicy](https://redirect.github.com/travelpolicy) in [#&#8203;1086](https://redirect.github.com/klauspost/compress/pull/1086)
+- gzhttp: remove redundant err check in zstdReader by [@&#8203;ryanfowler](https://redirect.github.com/ryanfowler) in [#&#8203;1090](https://redirect.github.com/klauspost/compress/pull/1090)
+- Run modernize. Deprecate Go 1.22 by [@&#8203;klauspost](https://redirect.github.com/klauspost) in [#&#8203;1095](https://redirect.github.com/klauspost/compress/pull/1095)
+- flate: Simplify matchlen by [@&#8203;klauspost](https://redirect.github.com/klauspost) in [#&#8203;1101](https://redirect.github.com/klauspost/compress/pull/1101)
+- flate: Add examples by [@&#8203;klauspost](https://redirect.github.com/klauspost) in [#&#8203;1102](https://redirect.github.com/klauspost/compress/pull/1102)
+- flate: Use exact sizes for huffman tables by [@&#8203;klauspost](https://redirect.github.com/klauspost) in [#&#8203;1103](https://redirect.github.com/klauspost/compress/pull/1103)
+- flate: Faster load+store by [@&#8203;klauspost](https://redirect.github.com/klauspost) in [#&#8203;1104](https://redirect.github.com/klauspost/compress/pull/1104)
+- Add notice to S2 about MinLZ by [@&#8203;klauspost](https://redirect.github.com/klauspost) in [#&#8203;1065](https://redirect.github.com/klauspost/compress/pull/1065)
+
+#### New Contributors
+
+- [@&#8203;wooffie](https://redirect.github.com/wooffie) made their first contribution in [#&#8203;1069](https://redirect.github.com/klauspost/compress/pull/1069)
+- [@&#8203;vdarulis](https://redirect.github.com/vdarulis) made their first contribution in [#&#8203;1080](https://redirect.github.com/klauspost/compress/pull/1080)
+- [@&#8203;travelpolicy](https://redirect.github.com/travelpolicy) made their first contribution in [#&#8203;1086](https://redirect.github.com/klauspost/compress/pull/1086)
+- [@&#8203;ryanfowler](https://redirect.github.com/ryanfowler) made their first contribution in [#&#8203;1090](https://redirect.github.com/klauspost/compress/pull/1090)
+
+**Full Changelog**: <https://github.com/klauspost/compress/compare/v1.18.0...v1.18.1>
+
+</details>
+
+---
+
+### Configuration
+
+📅 **Schedule**: Branch creation - Between 03:00 AM and 10:59 AM, only on Monday ( * 3-10 * * 1 ) in timezone Europe/Prague, Automerge - At any time (no schedule defined).
+
+🚦 **Automerge**: Enabled.
+
+♻ **Rebasing**: Whenever PR is behind base branch, or you tick the rebase/retry checkbox.
+
+🔕 **Ignore**: Close this PR and you won't be reminded about this update again.
+
+---
+
+ - [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check this box
+
+---
+
+To execute skipped test pipelines write comment `/ok-to-test`.
+
+This PR has been generated by [MintMaker](https://redirect.github.com/konflux-ci/mintmaker) (powered by [Renovate Bot](https://redirect.github.com/renovatebot/renovate)).
+<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiI0MS45MC4xLXJwbSIsInVwZGF0ZWRJblZlciI6IjQxLjkwLjEtcnBtIiwidGFyZ2V0QnJhbmNoIjoibWFzdGVyIiwibGFiZWxzIjpbXX0=-->
+
+
+---
+
+*Archived from: https://github.com/RedHatInsights/patchman-engine/pull/1901*

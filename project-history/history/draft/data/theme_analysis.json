@@ -1,0 +1,33 @@
+{
+  "genesis": {
+    "content templates": 4,
+    "playwright": 92,
+    "snapshots": 3
+  },
+  "production": {
+    "playwright": 221,
+    "snapshots": 10,
+    "content templates": 2
+  },
+  "expansion": {
+    "playwright": 234,
+    "snapshots": 129,
+    "introspection": 44,
+    "content templates": 23,
+    "pulp": 95
+  },
+  "templates-era": {
+    "introspection": 25,
+    "snapshots": 309,
+    "pulp": 208,
+    "playwright": 274,
+    "content templates": 104
+  },
+  "convergence": {
+    "playwright": 436,
+    "snapshots": 208,
+    "content templates": 99,
+    "pulp": 155,
+    "introspection": 23
+  }
+}

@@ -1,0 +1,201 @@
+---
+type: pull_request
+number: 1394
+title: "chore(deps): bump axios from 1.11.0 to 1.12.2"
+state: closed
+author: dependabot
+created: 2025-10-01T02:47:31Z
+updated: 2026-01-21T12:42:46Z
+closed: 2026-01-21T12:42:37Z
+base_branch: master
+head_branch: dependabot/npm_and_yarn/axios-1.12.2
+labels: ["dependencies", "minor"]
+url: https://github.com/RedHatInsights/patchman-ui/pull/1394
+---
+
+# Pull Request #1394: chore(deps): bump axios from 1.11.0 to 1.12.2
+
+**Author**: @dependabot
+**Created**: October 01, 2025 at 02:47 AM UTC
+**Status**: Closed
+**Labels**: `dependencies`, `minor`
+**Base**: `master` ← **Head**: `dependabot/npm_and_yarn/axios-1.12.2`
+
+## Description
+
+Bumps [axios](https://github.com/axios/axios) from 1.11.0 to 1.12.2.
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/axios/axios/releases">axios's releases</a>.</em></p>
+<blockquote>
+<h2>Release v1.12.2</h2>
+<h2>Release notes:</h2>
+<h3>Bug Fixes</h3>
+<ul>
+<li><strong>fetch:</strong> use current global fetch instead of cached one when env fetch is not specified to keep MSW support; (<a href="https://redirect.github.com/axios/axios/issues/7030">#7030</a>) (<a href="https://github.com/axios/axios/commit/cf78825e1229b60d1629ad0bbc8a752ff43c3f53">cf78825</a>)</li>
+</ul>
+<h3>Contributors to this release</h3>
+<ul>
+<li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+247/-16 ([#7030](https://github.com/axios/axios/issues/7030) [#7022](https://github.com/axios/axios/issues/7022) [#7024](https://github.com/axios/axios/issues/7024) )">Dmitriy Mozgovoy</a></li>
+<li><!-- raw HTML omitted --> <a href="https://github.com/noritaka1166" title="+2/-6 ([#7028](https://github.com/axios/axios/issues/7028) [#7029](https://github.com/axios/axios/issues/7029) )">Noritaka Kobayashi</a></li>
+</ul>
+<h2>Release v1.12.1</h2>
+<h2>Release notes:</h2>
+<h3>Bug Fixes</h3>
+<ul>
+<li><strong>types:</strong> fixed env config types; (<a href="https://redirect.github.com/axios/axios/issues/7020">#7020</a>) (<a href="https://github.com/axios/axios/commit/b5f26b75bdd9afa95016fb67d0cab15fc74cbf05">b5f26b7</a>)</li>
+</ul>
+<h3>Contributors to this release</h3>
+<ul>
+<li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+10/-4 ([#7020](https://github.com/axios/axios/issues/7020) )">Dmitriy Mozgovoy</a></li>
+</ul>
+<h2>Release v1.12.0</h2>
+<h2>Release notes:</h2>
+<h3>Bug Fixes</h3>
+<ul>
+<li>adding build artifacts (<a href="https://github.com/axios/axios/commit/9ec86de257bfa33856571036279169f385ed92bd">9ec86de</a>)</li>
+<li>dont add dist on release (<a href="https://github.com/axios/axios/commit/a2edc3606a4f775d868a67bb3461ff18ce7ecd11">a2edc36</a>)</li>
+<li><strong>fetch-adapter:</strong> set correct Content-Type for Node FormData (<a href="https://redirect.github.com/axios/axios/issues/6998">#6998</a>) (<a href="https://github.com/axios/axios/commit/a9f47afbf3224d2ca987dbd8188789c7ea853c5d">a9f47af</a>)</li>
+<li><strong>node:</strong> enforce maxContentLength for data: URLs (<a href="https://redirect.github.com/axios/axios/issues/7011">#7011</a>) (<a href="https://github.com/axios/axios/commit/945435fc51467303768202250debb8d4ae892593">945435f</a>)</li>
+<li>package exports (<a href="https://redirect.github.com/axios/axios/issues/5627">#5627</a>) (<a href="https://github.com/axios/axios/commit/aa78ac23fc9036163308c0f6bd2bb885e7af3f36">aa78ac2</a>)</li>
+<li><strong>params:</strong> removing '[' and ']' from URL encode exclude characters (<a href="https://redirect.github.com/axios/axios/issues/3316">#3316</a>) (<a href="https://redirect.github.com/axios/axios/issues/5715">#5715</a>) (<a href="https://github.com/axios/axios/commit/6d84189349c43b1dcdd977b522610660cc4c7042">6d84189</a>)</li>
+<li>release pr run (<a href="https://github.com/axios/axios/commit/fd7f404488b2c4f238c2fbe635b58026a634bfd2">fd7f404</a>)</li>
+<li><strong>types:</strong> change the type guard on isCancel (<a href="https://redirect.github.com/axios/axios/issues/5595">#5595</a>) (<a href="https://github.com/axios/axios/commit/0dbb7fd4f61dc568498cd13a681fa7f907d6ec7e">0dbb7fd</a>)</li>
+</ul>
+<h3>Features</h3>
+<ul>
+<li><strong>adapter:</strong> surface low‑level network error details; attach original error via cause (<a href="https://redirect.github.com/axios/axios/issues/6982">#6982</a>) (<a href="https://github.com/axios/axios/commit/78b290c57c978ed2ab420b90d97350231c9e5d74">78b290c</a>)</li>
+<li><strong>fetch:</strong> add fetch, Request, Response env config variables for the adapter; (<a href="https://redirect.github.com/axios/axios/issues/7003">#7003</a>) (<a href="https://github.com/axios/axios/commit/c959ff29013a3bc90cde3ac7ea2d9a3f9c08974b">c959ff2</a>)</li>
+<li>support reviver on JSON.parse (<a href="https://redirect.github.com/axios/axios/issues/5926">#5926</a>) (<a href="https://github.com/axios/axios/commit/2a9763426e43d996fd60d01afe63fa6e1f5b4fca">2a97634</a>), closes <a href="https://redirect.github.com/axios/axios/issues/5924">#5924</a></li>
+<li><strong>types:</strong> extend AxiosResponse interface to include custom headers type (<a href="https://redirect.github.com/axios/axios/issues/6782">#6782</a>) (<a href="https://github.com/axios/axios/commit/7960d34eded2de66ffd30b4687f8da0e46c4903e">7960d34</a>)</li>
+</ul>
+<h3>Contributors to this release</h3>
+<ul>
+<li><!-- raw HTML omitted --> <a href="https://github.com/WillianAgostini" title="+132/-16760 ([#7002](https://github.com/axios/axios/issues/7002) [#5926](https://github.com/axios/axios/issues/5926) [#6782](https://github.com/axios/axios/issues/6782) )">Willian Agostini</a></li>
+<li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+4263/-293 ([#7006](https://github.com/axios/axios/issues/7006) [#7003](https://github.com/axios/axios/issues/7003) )">Dmitriy Mozgovoy</a></li>
+<li><!-- raw HTML omitted --> <a href="https://github.com/mkhani01" title="+111/-15 ([#6982](https://github.com/axios/axios/issues/6982) )">khani</a></li>
+<li><!-- raw HTML omitted --> <a href="https://github.com/AmeerAssadi" title="+123/-0 ([#7011](https://github.com/axios/axios/issues/7011) )">Ameer Assadi</a></li>
+<li><!-- raw HTML omitted --> <a href="https://github.com/emiedonmokumo" title="+55/-35 ([#6998](https://github.com/axios/axios/issues/6998) )">Emiedonmokumo Dick-Boro</a></li>
+<li><!-- raw HTML omitted --> <a href="https://github.com/opsysdebug" title="+8/-8 ([#6980](https://github.com/axios/axios/issues/6980) )">Zeroday BYTE</a></li>
+</ul>
+<!-- raw HTML omitted -->
+</blockquote>
+<p>... (truncated)</p>
+</details>
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/axios/axios/blob/v1.x/CHANGELOG.md">axios's changelog</a>.</em></p>
+<blockquote>
+<h2><a href="https://github.com/axios/axios/compare/v1.12.1...v1.12.2">1.12.2</a> (2025-09-14)</h2>
+<h3>Bug Fixes</h3>
+<ul>
+<li><strong>fetch:</strong> use current global fetch instead of cached one when env fetch is not specified to keep MSW support; (<a href="https://redirect.github.com/axios/axios/issues/7030">#7030</a>) (<a href="https://github.com/axios/axios/commit/cf78825e1229b60d1629ad0bbc8a752ff43c3f53">cf78825</a>)</li>
+</ul>
+<h3>Contributors to this release</h3>
+<ul>
+<li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+247/-16 ([#7030](https://github.com/axios/axios/issues/7030) [#7022](https://github.com/axios/axios/issues/7022) [#7024](https://github.com/axios/axios/issues/7024) )">Dmitriy Mozgovoy</a></li>
+<li><!-- raw HTML omitted --> <a href="https://github.com/noritaka1166" title="+2/-6 ([#7028](https://github.com/axios/axios/issues/7028) [#7029](https://github.com/axios/axios/issues/7029) )">Noritaka Kobayashi</a></li>
+</ul>
+<h2><a href="https://github.com/axios/axios/compare/v1.12.0...v1.12.1">1.12.1</a> (2025-09-12)</h2>
+<h3>Bug Fixes</h3>
+<ul>
+<li><strong>types:</strong> fixed env config types; (<a href="https://redirect.github.com/axios/axios/issues/7020">#7020</a>) (<a href="https://github.com/axios/axios/commit/b5f26b75bdd9afa95016fb67d0cab15fc74cbf05">b5f26b7</a>)</li>
+</ul>
+<h3>Contributors to this release</h3>
+<ul>
+<li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+10/-4 ([#7020](https://github.com/axios/axios/issues/7020) )">Dmitriy Mozgovoy</a></li>
+</ul>
+<h1><a href="https://github.com/axios/axios/compare/v1.11.0...v1.12.0">1.12.0</a> (2025-09-11)</h1>
+<h3>Bug Fixes</h3>
+<ul>
+<li>adding build artifacts (<a href="https://github.com/axios/axios/commit/9ec86de257bfa33856571036279169f385ed92bd">9ec86de</a>)</li>
+<li>dont add dist on release (<a href="https://github.com/axios/axios/commit/a2edc3606a4f775d868a67bb3461ff18ce7ecd11">a2edc36</a>)</li>
+<li><strong>fetch-adapter:</strong> set correct Content-Type for Node FormData (<a href="https://redirect.github.com/axios/axios/issues/6998">#6998</a>) (<a href="https://github.com/axios/axios/commit/a9f47afbf3224d2ca987dbd8188789c7ea853c5d">a9f47af</a>)</li>
+<li><strong>node:</strong> enforce maxContentLength for data: URLs (<a href="https://redirect.github.com/axios/axios/issues/7011">#7011</a>) (<a href="https://github.com/axios/axios/commit/945435fc51467303768202250debb8d4ae892593">945435f</a>)</li>
+<li>package exports (<a href="https://redirect.github.com/axios/axios/issues/5627">#5627</a>) (<a href="https://github.com/axios/axios/commit/aa78ac23fc9036163308c0f6bd2bb885e7af3f36">aa78ac2</a>)</li>
+<li><strong>params:</strong> removing '[' and ']' from URL encode exclude characters (<a href="https://redirect.github.com/axios/axios/issues/3316">#3316</a>) (<a href="https://redirect.github.com/axios/axios/issues/5715">#5715</a>) (<a href="https://github.com/axios/axios/commit/6d84189349c43b1dcdd977b522610660cc4c7042">6d84189</a>)</li>
+<li>release pr run (<a href="https://github.com/axios/axios/commit/fd7f404488b2c4f238c2fbe635b58026a634bfd2">fd7f404</a>)</li>
+<li><strong>types:</strong> change the type guard on isCancel (<a href="https://redirect.github.com/axios/axios/issues/5595">#5595</a>) (<a href="https://github.com/axios/axios/commit/0dbb7fd4f61dc568498cd13a681fa7f907d6ec7e">0dbb7fd</a>)</li>
+</ul>
+<h3>Features</h3>
+<ul>
+<li><strong>adapter:</strong> surface low‑level network error details; attach original error via cause (<a href="https://redirect.github.com/axios/axios/issues/6982">#6982</a>) (<a href="https://github.com/axios/axios/commit/78b290c57c978ed2ab420b90d97350231c9e5d74">78b290c</a>)</li>
+<li><strong>fetch:</strong> add fetch, Request, Response env config variables for the adapter; (<a href="https://redirect.github.com/axios/axios/issues/7003">#7003</a>) (<a href="https://github.com/axios/axios/commit/c959ff29013a3bc90cde3ac7ea2d9a3f9c08974b">c959ff2</a>)</li>
+<li>support reviver on JSON.parse (<a href="https://redirect.github.com/axios/axios/issues/5926">#5926</a>) (<a href="https://github.com/axios/axios/commit/2a9763426e43d996fd60d01afe63fa6e1f5b4fca">2a97634</a>), closes <a href="https://redirect.github.com/axios/axios/issues/5924">#5924</a></li>
+<li><strong>types:</strong> extend AxiosResponse interface to include custom headers type (<a href="https://redirect.github.com/axios/axios/issues/6782">#6782</a>) (<a href="https://github.com/axios/axios/commit/7960d34eded2de66ffd30b4687f8da0e46c4903e">7960d34</a>)</li>
+</ul>
+<h3>Contributors to this release</h3>
+<ul>
+<li><!-- raw HTML omitted --> <a href="https://github.com/WillianAgostini" title="+132/-16760 ([#7002](https://github.com/axios/axios/issues/7002) [#5926](https://github.com/axios/axios/issues/5926) [#6782](https://github.com/axios/axios/issues/6782) )">Willian Agostini</a></li>
+<li><!-- raw HTML omitted --> <a href="https://github.com/DigitalBrainJS" title="+4263/-293 ([#7006](https://github.com/axios/axios/issues/7006) [#7003](https://github.com/axios/axios/issues/7003) )">Dmitriy Mozgovoy</a></li>
+<li><!-- raw HTML omitted --> <a href="https://github.com/mkhani01" title="+111/-15 ([#6982](https://github.com/axios/axios/issues/6982) )">khani</a></li>
+</ul>
+<!-- raw HTML omitted -->
+</blockquote>
+<p>... (truncated)</p>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/axios/axios/commit/e5a33366d75b65f88052b230b103731eb7dcb793"><code>e5a3336</code></a> chore(release): v1.12.2 (<a href="https://redirect.github.com/axios/axios/issues/7031">#7031</a>)</li>
+<li><a href="https://github.com/axios/axios/commit/38726c7586c6a2583b7e7dcdce0c4fedd013055d"><code>38726c7</code></a> refactor: change if in else to else if (<a href="https://redirect.github.com/axios/axios/issues/7028">#7028</a>)</li>
+<li><a href="https://github.com/axios/axios/commit/cf78825e1229b60d1629ad0bbc8a752ff43c3f53"><code>cf78825</code></a> fix(fetch): use current global fetch instead of cached one when env fetch is ...</li>
+<li><a href="https://github.com/axios/axios/commit/c26d00f451949306f708aa78d1e9f12b9eb6ff4b"><code>c26d00f</code></a> refactor: remove redundant assignment (<a href="https://redirect.github.com/axios/axios/issues/7029">#7029</a>)</li>
+<li><a href="https://github.com/axios/axios/commit/9fb41a8fcd6f698ee82175c0d9e654b4b0a7081c"><code>9fb41a8</code></a> chore(ci): add local HTTP server for Karma tests; (<a href="https://redirect.github.com/axios/axios/issues/7022">#7022</a>)</li>
+<li><a href="https://github.com/axios/axios/commit/19f9f36850210511445c67c865466156d6d1dee2"><code>19f9f36</code></a> docs(readme): add custom fetch section; (<a href="https://redirect.github.com/axios/axios/issues/7024">#7024</a>)</li>
+<li><a href="https://github.com/axios/axios/commit/3cac78c2de2d1d1af0c1b4753feff16c075f01d1"><code>3cac78c</code></a> chore(release): v1.12.1 (<a href="https://redirect.github.com/axios/axios/issues/7021">#7021</a>)</li>
+<li><a href="https://github.com/axios/axios/commit/b5f26b75bdd9afa95016fb67d0cab15fc74cbf05"><code>b5f26b7</code></a> fix(types): fixed env config types; (<a href="https://redirect.github.com/axios/axios/issues/7020">#7020</a>)</li>
+<li><a href="https://github.com/axios/axios/commit/0d8ad6e1de0f5339e02bc262d6f0df4936974120"><code>0d8ad6e</code></a> chore(release): v1.12.0 (<a href="https://redirect.github.com/axios/axios/issues/7013">#7013</a>)</li>
+<li><a href="https://github.com/axios/axios/commit/fd7f404488b2c4f238c2fbe635b58026a634bfd2"><code>fd7f404</code></a> fix: release pr run</li>
+<li>Additional commits viewable in <a href="https://github.com/axios/axios/compare/v1.11.0...v1.12.2">compare view</a></li>
+</ul>
+</details>
+<br />
+
+
+[![Dependabot compatibility score](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=axios&package-manager=npm_and_yarn&previous-version=1.11.0&new-version=1.12.2)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)
+
+You can trigger a rebase of this PR by commenting `@dependabot rebase`.
+
+[//]: # (dependabot-automerge-start)
+[//]: # (dependabot-automerge-end)
+
+---
+
+<details>
+<summary>Dependabot commands and options</summary>
+<br />
+
+You can trigger Dependabot actions by commenting on this PR:
+- `@dependabot rebase` will rebase this PR
+- `@dependabot recreate` will recreate this PR, overwriting any edits that have been made to it
+- `@dependabot merge` will merge this PR after your CI passes on it
+- `@dependabot squash and merge` will squash and merge this PR after your CI passes on it
+- `@dependabot cancel merge` will cancel a previously requested merge and block automerging
+- `@dependabot reopen` will reopen this PR if it is closed
+- `@dependabot close` will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually
+- `@dependabot show <dependency name> ignore conditions` will show all of the ignore conditions of the specified dependency
+- `@dependabot ignore this major version` will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)
+- `@dependabot ignore this minor version` will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)
+- `@dependabot ignore this dependency` will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)
+You can disable automated security fix PRs for this repo from the [Security Alerts page](https://github.com/RedHatInsights/patchman-ui/network/alerts).
+
+</details>
+
+> **Note**
+> Automatic rebases have been disabled on this pull request as it has been open for over 30 days.
+
+
+---
+
+## Discussion
+
+### Comment by @dependabot on January 21, 2026 at 12:42 PM UTC
+
+OK, I won't notify you again about this release, but will get in touch when a new version is available. If you'd rather skip all updates until the next major or minor version, let me know by commenting `@dependabot ignore this major version` or `@dependabot ignore this minor version`. You can also ignore all major, minor, or patch releases for a dependency by adding an [`ignore` condition](https://docs.github.com/en/code-security/supply-chain-security/configuration-options-for-dependency-updates#ignore) with the desired `update_types` to your config file.
+
+If you change your mind, just re-open this PR and I'll resolve any conflicts on it.
+
+---
+
+*Archived from: https://github.com/RedHatInsights/patchman-ui/pull/1394*

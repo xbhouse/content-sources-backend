@@ -1,0 +1,14 @@
+{
+  "repository": "RedHatInsights/patchman-ui",
+  "fetched_at": "2026-06-28T17:58:11.654571Z",
+  "stats": {
+    "total_issues": 3,
+    "open_issues": 1,
+    "closed_issues": 2,
+    "total_prs": 1666,
+    "open_prs": 0,
+    "merged_prs": 901,
+    "closed_prs": 765,
+    "api_calls_made": 18
+  }
+}

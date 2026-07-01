@@ -1,0 +1,137 @@
+{
+  "MichaelMraka": {
+    "name": "Michael Mraka",
+    "email": "michael.mraka@redhat.com",
+    "confidence": "high",
+    "github_prs_authored": 336
+  },
+  "josef-hak": {
+    "name": "Josef Hak",
+    "email": "jhak@redhat.com",
+    "confidence": "high",
+    "github_prs_authored": 487
+  },
+  "jlsherrill": {
+    "name": "Justin Sherrill",
+    "email": "jlsherrill@gmail.com",
+    "confidence": "medium",
+    "github_prs_authored": 619,
+    "notes": "Multiple git names: ['Justin Sherrill', 'jlsherrill']"
+  },
+  "Andrewgdewar": {
+    "name": "Andrew Dewar",
+    "email": "andrewgdewar@gmail.com",
+    "confidence": "medium",
+    "github_prs_authored": 218,
+    "notes": "Multiple git names: ['Andrew Dewar', 'adewar', 'andrewgdewar']"
+  },
+  "psegedy": {
+    "name": "Patrik Segedy",
+    "email": "psegedy@redhat.com",
+    "confidence": "high",
+    "github_prs_authored": 343
+  },
+  "jiridostal": {
+    "name": "Jiri Dostal",
+    "email": "jdostal@redhat.com",
+    "confidence": "high",
+    "github_prs_authored": 45
+  },
+  "semtexzv": {
+    "name": "Michal Hornicky",
+    "email": "mhornick@redhat.com",
+    "confidence": "medium",
+    "github_prs_authored": 303,
+    "notes": "semtexzv and mhornick are same person (early vs later commits); Multiple git names: ['Michal Hornicky', 'mhornick', 'semtexzv']; GitHub handle for early patchman-engine work"
+  },
+  "mhornick": {
+    "name": "Michal Hornicky",
+    "email": "mhornick@redhat.com",
+    "confidence": "high",
+    "github_prs_authored": 303,
+    "notes": "Same person as @semtexzv; commits after 2020 use mhornick@redhat.com"
+  },
+  "mkholjuraev": {
+    "name": "Mukhammadkhol Kholiujurakhmad",
+    "email": "59481011+mkholjuraev@users.noreply.github.com",
+    "confidence": "medium",
+    "github_prs_authored": 363,
+    "notes": "Git commits also use Muslimjon, mkholjur, Muslimjon Kholjuraev"
+  },
+  "rverdile": {
+    "name": "Ryan Verdile",
+    "email": "ryanverdile@gmail.com",
+    "confidence": "high",
+    "github_prs_authored": 260,
+    "notes": "Git also commits as rverdile (handle-as-name)"
+  },
+  "swadeley": {
+    "name": "Stephen Wadeley",
+    "email": "swadeley@redhat.com",
+    "confidence": "high",
+    "github_prs_authored": 270,
+    "notes": "Git commits use swadeley as author name; first name Stephen (not Sam)"
+  },
+  "leSamo": {
+    "name": "Samuel Olekšák",
+    "email": "soleksak@redhat.com",
+    "confidence": "high",
+    "github_prs_authored": 100,
+    "notes": "Git also commits as leSamo (handle-as-name)"
+  },
+  "dominikvagner": {
+    "name": "Dominik Vagner",
+    "email": "dvagner@redhat.com",
+    "confidence": "medium",
+    "github_prs_authored": 135,
+    "notes": "Multiple git names: ['Dominik Vagner', 'Dominik Vágner']"
+  },
+  "xbhouse": {
+    "name": "Bryttanie House",
+    "email": "bhouse@redhat.com",
+    "confidence": "medium",
+    "github_prs_authored": 205,
+    "notes": "Multiple git names: ['Bryttanie House', 'Bryttanie']"
+  },
+  "Dugowitch": {
+    "name": "Jakub Dugovič",
+    "email": "jdugovic@redhat.com",
+    "confidence": "high",
+    "github_prs_authored": 72
+  },
+  "TenSt": {
+    "name": "Stepan Makymchuk",
+    "email": "smaksymc@redhat.com",
+    "confidence": "high",
+    "github_prs_authored": 80,
+    "notes": "Git also commits as TenSt, Stepan"
+  },
+  "avisiedo": {
+    "name": "Alejandro Viciedo",
+    "email": "avisiedo@redhat.com",
+    "confidence": "high",
+    "github_prs_authored": 31,
+    "notes": "Git also commits as Alejandro (first name only)"
+  },
+  "mshriver": {
+    "name": "Mike Shriver",
+    "email": "mshriver@redhat.com",
+    "confidence": "high",
+    "github_prs_authored": 42
+  },
+  "katarinazaprazna": {
+    "name": "Katarina Zaprazna",
+    "email": "",
+    "confidence": "medium",
+    "github_prs_authored": 46,
+    "notes": "No local git commits matched; identity verified via PR author field only"
+  },
+  "_uncertainties": [
+    "jlsherrill uses two emails (jlsherrill@gmail.com, jsherril@redhat.com) — combined for commit counts in key_contributors.md",
+    "semtexzv and mhornick are the same person (Michal Hornicky); PR authorship attributed to @semtexzv handle",
+    "xbhouse uses bhouse@redhat.com and GitHub noreply email — combined for commit counts",
+    "mkholjuraev git author names vary (Muslimjon, mkholjur, Muslimjon Kholjuraev); canonical name from team roster",
+    "katarinazaprazna: no git author match in local clones; PR-only verification",
+    "dominikvagner: accent variants in git (Vagner vs Vágner) — same person"
+  ]
+}

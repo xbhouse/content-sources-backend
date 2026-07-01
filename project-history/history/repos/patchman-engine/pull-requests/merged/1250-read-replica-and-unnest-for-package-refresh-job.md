@@ -1,0 +1,109 @@
+---
+type: pull_request
+number: 1250
+title: "Read replica and unnest for package refresh job"
+state: merged
+author: psegedy
+created: 2023-06-26T14:27:03Z
+updated: 2023-06-27T08:41:52Z
+closed: 2023-06-27T08:41:51Z
+merged: 2023-06-27T08:41:51Z
+base_branch: master
+head_branch: unnest_refresh
+labels: []
+url: https://github.com/RedHatInsights/patchman-engine/pull/1250
+---
+
+# Pull Request #1250: Read replica and unnest for package refresh job
+
+**Author**: @psegedy
+**Created**: June 26, 2023 at 02:27 PM UTC
+**Status**: Merged
+**Labels**: None
+**Base**: `master` ← **Head**: `unnest_refresh`
+
+## Description
+
+## Secure Coding Practices Checklist GitHub Link
+- https://github.com/RedHatInsights/secure-coding-checklist
+
+## Secure Coding Checklist
+- [x] Input Validation
+- [x] Output Encoding
+- [x] Authentication and Password Management
+- [x] Session Management
+- [x] Access Control
+- [x] Cryptographic Practices
+- [x] Error Handling and Logging
+- [x] Data Protection
+- [x] Communication Security
+- [x] System Configuration
+- [x] Database Security
+- [x] File Management
+- [x] Memory Management
+- [x] General Coding Practices
+
+
+---
+
+## Discussion
+
+### Comment by @jira-linking on June 26, 2023 at 02:27 PM UTC
+
+Referenced Jiras:
+https://issues.redhat.com/browse/SPM-2124
+https://issues.redhat.com/browse/SPM-2129
+
+
+### Comment by @codecov-commenter on June 26, 2023 at 02:34 PM UTC
+
+## [Codecov](https://app.codecov.io/gh/RedHatInsights/patchman-engine/pull/1250?src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights) Report
+Patch coverage has no change and project coverage change: **`-0.02`** :warning:
+> Comparison is base [(`733d716`)](https://app.codecov.io/gh/RedHatInsights/patchman-engine/commit/733d71681c76aa9011b8e828e7b4199af269d03b?el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights) 61.57% compared to head [(`a36af47`)](https://app.codecov.io/gh/RedHatInsights/patchman-engine/pull/1250?src=pr&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights) 61.56%.
+
+<details><summary>Additional details and impacted files</summary>
+
+
+```diff
+@@            Coverage Diff             @@
+##           master    #1250      +/-   ##
+==========================================
+- Coverage   61.57%   61.56%   -0.02%     
+==========================================
+  Files         105      105              
+  Lines        6512     6515       +3     
+==========================================
++ Hits         4010     4011       +1     
+- Misses       1983     1985       +2     
+  Partials      519      519              
+```
+
+| Flag | Coverage Δ | |
+|---|---|---|
+| unittests | `61.56% <0.00%> (-0.02%)` | :arrow_down: |
+
+Flags with carried forward coverage won't be shown. [Click here](https://docs.codecov.io/docs/carryforward-flags?utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights#carryforward-flags-in-the-pull-request-comment) to find out more.
+
+| [Impacted Files](https://app.codecov.io/gh/RedHatInsights/patchman-engine/pull/1250?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights) | Coverage Δ | |
+|---|---|---|
+| [evaluator/evaluate\_packages.go](https://app.codecov.io/gh/RedHatInsights/patchman-engine/pull/1250?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights#diff-ZXZhbHVhdG9yL2V2YWx1YXRlX3BhY2thZ2VzLmdv) | `77.92% <ø> (-0.10%)` | :arrow_down: |
+| [tasks/caches/refresh\_packages\_caches.go](https://app.codecov.io/gh/RedHatInsights/patchman-engine/pull/1250?src=pr&el=tree&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights#diff-dGFza3MvY2FjaGVzL3JlZnJlc2hfcGFja2FnZXNfY2FjaGVzLmdv) | `0.00% <0.00%> (ø)` | |
+
+... and [1 file with indirect coverage changes](https://app.codecov.io/gh/RedHatInsights/patchman-engine/pull/1250/indirect-changes?src=pr&el=tree-more&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights)
+
+
+</details>
+
+[:umbrella: View full report in Codecov by Sentry](https://app.codecov.io/gh/RedHatInsights/patchman-engine/pull/1250?src=pr&el=continue&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights).   
+:loudspeaker: Do you have feedback about the report comment? [Let us know in this issue](https://about.codecov.io/codecov-pr-comment-feedback/?utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights).
+
+
+---
+
+## Reviews
+
+### Review by @MichaelMraka - Approved on June 27, 2023 at 08:20 AM UTC
+
+---
+
+*Archived from: https://github.com/RedHatInsights/patchman-engine/pull/1250*

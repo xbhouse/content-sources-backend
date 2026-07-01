@@ -1,0 +1,162 @@
+---
+type: pull_request
+number: 1571
+title: "chore(deps): bump lodash from 4.17.23 to 4.18.1"
+state: merged
+author: dependabot
+created: 2026-04-02T17:48:40Z
+updated: 2026-04-06T14:33:09Z
+closed: 2026-04-06T14:33:00Z
+merged: 2026-04-06T14:33:00Z
+base_branch: master
+head_branch: dependabot/npm_and_yarn/lodash-4.18.1
+labels: ["dependencies", "minor"]
+url: https://github.com/RedHatInsights/patchman-ui/pull/1571
+---
+
+# Pull Request #1571: chore(deps): bump lodash from 4.17.23 to 4.18.1
+
+**Author**: @dependabot
+**Created**: April 02, 2026 at 05:48 PM UTC
+**Status**: Merged
+**Labels**: `dependencies`, `minor`
+**Base**: `master` ← **Head**: `dependabot/npm_and_yarn/lodash-4.18.1`
+
+## Description
+
+Bumps [lodash](https://github.com/lodash/lodash) from 4.17.23 to 4.18.1.
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/lodash/lodash/releases">lodash's releases</a>.</em></p>
+<blockquote>
+<h2>4.18.1</h2>
+<h2>Bugs</h2>
+<p>Fixes a <code>ReferenceError</code> issue in <code>lodash</code> <code>lodash-es</code> <code>lodash-amd</code> and <code>lodash.template</code> when using the <code>template</code> and <code>fromPairs</code> functions from the modular builds. See <a href="https://redirect.github.com/lodash/lodash/issues/6167#issuecomment-4165269769">lodash/lodash#6167</a></p>
+<p>These defects were related to how lodash distributions are built from the main branch using <a href="https://github.com/lodash-archive/lodash-cli">https://github.com/lodash-archive/lodash-cli</a>. When internal dependencies change inside lodash functions, equivalent updates need to be made to a mapping in the lodash-cli. (hey, it was ahead of its time once upon a time!). We know this, but we missed it in the last release. It's the kind of thing that passes in CI, but fails bc the build is not the same thing you tested.</p>
+<p>There is no diff on main for this, but you can see the diffs for each of the npm packages on their respective branches:</p>
+<ul>
+<li><code>lodash</code>: <a href="https://github.com/lodash/lodash/compare/4.18.0-npm...4.18.1-npm">https://github.com/lodash/lodash/compare/4.18.0-npm...4.18.1-npm</a></li>
+<li><code>lodash-es</code>: <a href="https://github.com/lodash/lodash/compare/4.18.0-es...4.18.1-es">https://github.com/lodash/lodash/compare/4.18.0-es...4.18.1-es</a></li>
+<li><code>lodash-amd</code>: <a href="https://github.com/lodash/lodash/compare/4.18.0-amd...4.18.1-amd">https://github.com/lodash/lodash/compare/4.18.0-amd...4.18.1-amd</a></li>
+<li><code>lodash.template</code><a href="https://github.com/lodash/lodash/compare/4.18.0-npm-packages...4.18.1-npm-packages">https://github.com/lodash/lodash/compare/4.18.0-npm-packages...4.18.1-npm-packages</a></li>
+</ul>
+<h2>4.18.0</h2>
+<h2>v4.18.0</h2>
+<p><strong>Full Changelog</strong>: <a href="https://github.com/lodash/lodash/compare/4.17.23...4.18.0">https://github.com/lodash/lodash/compare/4.17.23...4.18.0</a></p>
+<h3>Security</h3>
+<p><strong><code>_.unset</code> / <code>_.omit</code></strong>: Fixed prototype pollution via <code>constructor</code>/<code>prototype</code> path traversal (<a href="https://github.com/lodash/lodash/security/advisories/GHSA-f23m-r3pf-42rh">GHSA-f23m-r3pf-42rh</a>, <a href="https://github.com/lodash/lodash/commit/fe8d32eda854377349a4f922ab7655c8e5df9a0b">fe8d32e</a>). Previously, array-wrapped path segments and primitive roots could bypass the existing guards, allowing deletion of properties from built-in prototypes. Now <code>constructor</code> and <code>prototype</code> are blocked unconditionally as non-terminal path keys, matching <code>baseSet</code>. Calls that previously returned <code>true</code> and deleted the property now return <code>false</code> and leave the target untouched.</p>
+<p><strong><code>_.template</code></strong>: Fixed code injection via <code>imports</code> keys (<a href="https://github.com/lodash/lodash/security/advisories/GHSA-r5fr-rjxr-66jc">GHSA-r5fr-rjxr-66jc</a>, CVE-2026-4800, <a href="https://github.com/lodash/lodash/commit/879aaa93132d78c2f8d20c60279da9f8b21576d6">879aaa9</a>). Fixes an incomplete patch for CVE-2021-23337. The <code>variable</code> option was validated against <code>reForbiddenIdentifierChars</code> but <code>importsKeys</code> was left unguarded, allowing code injection via the same <code>Function()</code> constructor sink. <code>imports</code> keys containing forbidden identifier characters now throw <code>&quot;Invalid imports option passed into _.template&quot;</code>.</p>
+<h3>Docs</h3>
+<ul>
+<li>Add security notice for <code>_.template</code> in threat model and API docs (<a href="https://redirect.github.com/lodash/lodash/pull/6099">#6099</a>)</li>
+<li>Document <code>lower &gt; upper</code> behavior in <code>_.random</code> (<a href="https://redirect.github.com/lodash/lodash/pull/6115">#6115</a>)</li>
+<li>Fix quotes in <code>_.compact</code> jsdoc (<a href="https://redirect.github.com/lodash/lodash/pull/6090">#6090</a>)</li>
+</ul>
+<h3><code>lodash.*</code> modular packages</h3>
+<p><a href="https://redirect.github.com/lodash/lodash/pull/6157">Diff</a></p>
+<p>We have also regenerated and published a select number of the <code>lodash.*</code> modular packages.</p>
+<p>These modular packages had fallen out of sync significantly from the minor/patch updates to lodash. Specifically, we have brought the following packages up to parity w/ the latest lodash release because they have had CVEs on them in the past:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/lodash.orderby">lodash.orderby</a></li>
+<li><a href="https://www.npmjs.com/package/lodash.tonumber">lodash.tonumber</a></li>
+<li><a href="https://www.npmjs.com/package/lodash.trim">lodash.trim</a></li>
+<li><a href="https://www.npmjs.com/package/lodash.trimend">lodash.trimend</a></li>
+<li><a href="https://www.npmjs.com/package/lodash.sortedindexby">lodash.sortedindexby</a></li>
+<li><a href="https://www.npmjs.com/package/lodash.zipobjectdeep">lodash.zipobjectdeep</a></li>
+<li><a href="https://www.npmjs.com/package/lodash.unset">lodash.unset</a></li>
+<li><a href="https://www.npmjs.com/package/lodash.omit">lodash.omit</a></li>
+<li><a href="https://www.npmjs.com/package/lodash.template">lodash.template</a></li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/lodash/lodash/commit/cb0b9b9212521c08e3eafe7c8cb0af1b42b6649e"><code>cb0b9b9</code></a> release(patch): bump main to 4.18.1 (<a href="https://redirect.github.com/lodash/lodash/issues/6177">#6177</a>)</li>
+<li><a href="https://github.com/lodash/lodash/commit/75535f57883b7225adb96de1cfc1cd4169cfcb51"><code>75535f5</code></a> chore: prune stale advisory refs (<a href="https://redirect.github.com/lodash/lodash/issues/6170">#6170</a>)</li>
+<li><a href="https://github.com/lodash/lodash/commit/62e91bc6a39c98d85b9ada8c44d40593deaf82a4"><code>62e91bc</code></a> docs: remove n_ Node.js &lt; 6 REPL note from README (<a href="https://redirect.github.com/lodash/lodash/issues/6165">#6165</a>)</li>
+<li><a href="https://github.com/lodash/lodash/commit/59be2de61f8aa9461c7856533b51d31b7d8babc4"><code>59be2de</code></a> release(minor): bump to 4.18.0 (<a href="https://redirect.github.com/lodash/lodash/issues/6161">#6161</a>)</li>
+<li><a href="https://github.com/lodash/lodash/commit/af634573030f979194871da7c68f79420992f53d"><code>af63457</code></a> fix: broken tests for _.template 879aaa9</li>
+<li><a href="https://github.com/lodash/lodash/commit/1073a7693e1727e0cf3641e5f71f75ddcf8de7c0"><code>1073a76</code></a> fix: linting issues</li>
+<li><a href="https://github.com/lodash/lodash/commit/879aaa93132d78c2f8d20c60279da9f8b21576d6"><code>879aaa9</code></a> fix: validate imports keys in _.template</li>
+<li><a href="https://github.com/lodash/lodash/commit/fe8d32eda854377349a4f922ab7655c8e5df9a0b"><code>fe8d32e</code></a> fix: block prototype pollution in baseUnset via constructor/prototype traversal</li>
+<li><a href="https://github.com/lodash/lodash/commit/18ba0a32f42fd02117f096b032f89c984173462d"><code>18ba0a3</code></a> refactor(fromPairs): use baseAssignValue for consistent assignment (<a href="https://redirect.github.com/lodash/lodash/issues/6153">#6153</a>)</li>
+<li><a href="https://github.com/lodash/lodash/commit/b8190803d48d60b8c80ad45d39125f32fa618cb2"><code>b819080</code></a> ci: add dist sync validation workflow (<a href="https://redirect.github.com/lodash/lodash/issues/6137">#6137</a>)</li>
+<li>Additional commits viewable in <a href="https://github.com/lodash/lodash/compare/4.17.23...4.18.1">compare view</a></li>
+</ul>
+</details>
+<br />
+
+
+[![Dependabot compatibility score](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=lodash&package-manager=npm_and_yarn&previous-version=4.17.23&new-version=4.18.1)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)
+
+Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting `@dependabot rebase`.
+
+[//]: # (dependabot-automerge-start)
+[//]: # (dependabot-automerge-end)
+
+---
+
+<details>
+<summary>Dependabot commands and options</summary>
+<br />
+
+You can trigger Dependabot actions by commenting on this PR:
+- `@dependabot rebase` will rebase this PR
+- `@dependabot recreate` will recreate this PR, overwriting any edits that have been made to it
+- `@dependabot show <dependency name> ignore conditions` will show all of the ignore conditions of the specified dependency
+- `@dependabot ignore this major version` will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)
+- `@dependabot ignore this minor version` will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)
+- `@dependabot ignore this dependency` will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)
+You can disable automated security fix PRs for this repo from the [Security Alerts page](https://github.com/RedHatInsights/patchman-ui/network/alerts).
+
+</details>
+
+---
+
+## Discussion
+
+### Comment by @codecov-commenter on April 02, 2026 at 05:51 PM UTC
+
+## [Codecov](https://app.codecov.io/gh/RedHatInsights/patchman-ui/pull/1571?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights) Report
+:white_check_mark: All modified and coverable lines are covered by tests.
+:white_check_mark: Project coverage is 75.88%. Comparing base ([`a08d0d6`](https://app.codecov.io/gh/RedHatInsights/patchman-ui/commit/a08d0d69deb64ea8523582130fbabff1dde6be51?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights)) to head ([`48bbfd5`](https://app.codecov.io/gh/RedHatInsights/patchman-ui/commit/48bbfd53cc8de309e1235e7ad6d8b598c34d0183?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights)).
+:warning: Report is 7 commits behind head on master.
+
+<details><summary>Additional details and impacted files</summary>
+
+
+
+```diff
+@@           Coverage Diff           @@
+##           master    #1571   +/-   ##
+=======================================
+  Coverage   75.88%   75.88%           
+=======================================
+  Files         103      103           
+  Lines        3164     3164           
+  Branches      686      691    +5     
+=======================================
+  Hits         2401     2401           
+  Misses        684      684           
+  Partials       79       79           
+```
+</details>
+
+[:umbrella: View full report in Codecov by Sentry](https://app.codecov.io/gh/RedHatInsights/patchman-ui/pull/1571?dropdown=coverage&src=pr&el=continue&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights).   
+:loudspeaker: Have feedback on the report? [Share it here](https://about.codecov.io/codecov-pr-comment-feedback/?utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights).
+<details><summary> :rocket: New features to boost your workflow: </summary>
+
+- :snowflake: [Test Analytics](https://docs.codecov.com/docs/test-analytics): Detect flaky tests, report on failures, and find test suite problems.
+- :package: [JS Bundle Analysis](https://docs.codecov.com/docs/javascript-bundle-analysis): Save yourself from yourself by tracking and limiting bundle sizes in JS merges.
+</details>
+
+---
+
+## Reviews
+
+### Review by @xbhouse - Approved on April 06, 2026 at 02:32 PM UTC
+
+---
+
+*Archived from: https://github.com/RedHatInsights/patchman-ui/pull/1571*

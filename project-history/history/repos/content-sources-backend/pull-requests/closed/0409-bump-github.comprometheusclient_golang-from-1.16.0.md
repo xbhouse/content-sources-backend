@@ -1,0 +1,162 @@
+---
+type: pull_request
+number: 409
+title: "Bump github.com/prometheus/client_golang from 1.16.0 to 1.17.0"
+state: closed
+author: dependabot
+created: 2023-10-02T04:57:42Z
+updated: 2023-10-02T13:59:00Z
+closed: 2023-10-02T13:58:49Z
+base_branch: main
+head_branch: dependabot/go_modules/github.com/prometheus/client_golang-1.17.0
+labels: ["dependencies"]
+url: https://github.com/content-services/content-sources-backend/pull/409
+---
+
+# Pull Request #409: Bump github.com/prometheus/client_golang from 1.16.0 to 1.17.0
+
+**Author**: @dependabot
+**Created**: October 02, 2023 at 04:57 AM UTC
+**Status**: Closed
+**Labels**: `dependencies`
+**Base**: `main` ← **Head**: `dependabot/go_modules/github.com/prometheus/client_golang-1.17.0`
+
+## Description
+
+Bumps [github.com/prometheus/client_golang](https://github.com/prometheus/client_golang) from 1.16.0 to 1.17.0.
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/prometheus/client_golang/releases">github.com/prometheus/client_golang's releases</a>.</em></p>
+<blockquote>
+<h2>v1.17.0</h2>
+<h2>What's Changed</h2>
+<ul>
+<li>[CHANGE] Minimum required go version is now 1.19 (we also test client_golang against new 1.21 version). <a href="https://redirect.github.com/prometheus/client_golang/issues/1325">#1325</a></li>
+<li>[FEATURE] Add support for Created Timestamps in Counters, Summaries and Historams. <a href="https://redirect.github.com/prometheus/client_golang/issues/1313">#1313</a></li>
+<li>[ENHANCEMENT] Enable detection of a native histogram without observations. <a href="https://redirect.github.com/prometheus/client_golang/issues/1314">#1314</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li>Merge v1.16.0 to main by <a href="https://github.com/bwplotka"><code>@​bwplotka</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1293">prometheus/client_golang#1293</a></li>
+<li>Synchronize common files from prometheus/prometheus by <a href="https://github.com/prombot"><code>@​prombot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1297">prometheus/client_golang#1297</a></li>
+<li>ci: define minimal permissions to GitHub workflows by <a href="https://github.com/diogoteles08"><code>@​diogoteles08</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1295">prometheus/client_golang#1295</a></li>
+<li>Do not allocate memory when there's no constraints by <a href="https://github.com/Okhoshi"><code>@​Okhoshi</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1296">prometheus/client_golang#1296</a></li>
+<li>Bump golang.org/x/sys from 0.8.0 to 0.9.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1306">prometheus/client_golang#1306</a></li>
+<li>Bump google.golang.org/grpc from 1.45.0 to 1.53.0 in /tutorial/whatsup by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1307">prometheus/client_golang#1307</a></li>
+<li>histogram: Enable detection of a native histogram without observations by <a href="https://github.com/beorn7"><code>@​beorn7</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1314">prometheus/client_golang#1314</a></li>
+<li>Bump github.com/prometheus/procfs from 0.10.1 to 0.11.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1305">prometheus/client_golang#1305</a></li>
+<li>Synchronize common files from prometheus/prometheus by <a href="https://github.com/prombot"><code>@​prombot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1302">prometheus/client_golang#1302</a></li>
+<li>Fix data-race in metric without <code>code</code> and <code>method</code> but with <code>WithLabelFromCtx</code> by <a href="https://github.com/tigrato"><code>@​tigrato</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1318">prometheus/client_golang#1318</a></li>
+<li>Add missing tick &quot;`&quot; in README by <a href="https://github.com/ZiViZiViZ"><code>@​ZiViZiViZ</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1321">prometheus/client_golang#1321</a></li>
+<li>Bump golang.org/x/sys from 0.9.0 to 0.10.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1320">prometheus/client_golang#1320</a></li>
+<li>Bump github.com/prometheus/procfs from 0.11.0 to 0.11.1 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1319">prometheus/client_golang#1319</a></li>
+<li>docs: trivial grammar fixes to improve readability in promauto Godoc by <a href="https://github.com/sengi"><code>@​sengi</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1322">prometheus/client_golang#1322</a></li>
+<li>Add Go 1.21 support by <a href="https://github.com/kakkoyun"><code>@​kakkoyun</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1325">prometheus/client_golang#1325</a></li>
+<li>Bump client_model by <a href="https://github.com/ArthurSens"><code>@​ArthurSens</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1323">prometheus/client_golang#1323</a></li>
+<li>histogram docs: Fixed minor nit. by <a href="https://github.com/bwplotka"><code>@​bwplotka</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1324">prometheus/client_golang#1324</a></li>
+<li>Update building by <a href="https://github.com/SuperQ"><code>@​SuperQ</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1326">prometheus/client_golang#1326</a></li>
+<li>Bump golang.org/x/sys from 0.10.0 to 0.11.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1331">prometheus/client_golang#1331</a></li>
+<li>Bump github.com/prometheus/client_golang from 1.15.1-0.20230416215738-0963f595c689 to 1.16.0 in /tutorial/whatsup by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1329">prometheus/client_golang#1329</a></li>
+<li>Bump github.com/prometheus/client_golang from 1.13.1 to 1.16.0 in /examples/middleware by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1328">prometheus/client_golang#1328</a></li>
+<li>Bump github.com/prometheus/common from 0.42.0 to 0.44.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1284">prometheus/client_golang#1284</a></li>
+<li>Bump github.com/prometheus/common from 0.42.0 to 0.44.0 in /tutorial/whatsup by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1330">prometheus/client_golang#1330</a></li>
+<li>Bump google.golang.org/protobuf from 1.30.0 to 1.31.0 by <a href="https://github.com/dependabot"><code>@​dependabot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1304">prometheus/client_golang#1304</a></li>
+<li>Synchronize common files from prometheus/prometheus by <a href="https://github.com/prombot"><code>@​prombot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1332">prometheus/client_golang#1332</a></li>
+<li>Synchronize common files from prometheus/prometheus by <a href="https://github.com/prombot"><code>@​prombot</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1338">prometheus/client_golang#1338</a></li>
+<li>Cleanup golangci-lint errcheck by <a href="https://github.com/SuperQ"><code>@​SuperQ</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1339">prometheus/client_golang#1339</a></li>
+<li>Add go_godebug_non_default_behavior_tlsmaxrsasize_events_total by <a href="https://github.com/alexandear"><code>@​alexandear</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1348">prometheus/client_golang#1348</a></li>
+<li>Extend Counters, Summaries and Histograms with creation timestamp by <a href="https://github.com/ArthurSens"><code>@​ArthurSens</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1313">prometheus/client_golang#1313</a></li>
+<li>Fix typos in comments, tests, and errors by <a href="https://github.com/alexandear"><code>@​alexandear</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1346">prometheus/client_golang#1346</a></li>
+<li>Deprecated comment should begin with &quot;Deprecated:&quot; by <a href="https://github.com/alexandear"><code>@​alexandear</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1347">prometheus/client_golang#1347</a></li>
+<li>Add changelog entry for 1.17 by <a href="https://github.com/ArthurSens"><code>@​ArthurSens</code></a> in <a href="https://redirect.github.com/prometheus/client_golang/pull/1352">prometheus/client_golang#1352</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<h2>New Contributors</h2>
+<ul>
+<li><a href="https://github.com/diogoteles08"><code>@​diogoteles08</code></a> made their first contribution in <a href="https://redirect.github.com/prometheus/client_golang/pull/1295">prometheus/client_golang#1295</a></li>
+<li><a href="https://github.com/tigrato"><code>@​tigrato</code></a> made their first contribution in <a href="https://redirect.github.com/prometheus/client_golang/pull/1318">prometheus/client_golang#1318</a></li>
+<li><a href="https://github.com/ZiViZiViZ"><code>@​ZiViZiViZ</code></a> made their first contribution in <a href="https://redirect.github.com/prometheus/client_golang/pull/1321">prometheus/client_golang#1321</a></li>
+<li><a href="https://github.com/sengi"><code>@​sengi</code></a> made their first contribution in <a href="https://redirect.github.com/prometheus/client_golang/pull/1322">prometheus/client_golang#1322</a></li>
+<li><a href="https://github.com/ArthurSens"><code>@​ArthurSens</code></a> made their first contribution in <a href="https://redirect.github.com/prometheus/client_golang/pull/1323">prometheus/client_golang#1323</a></li>
+</ul>
+<!-- raw HTML omitted -->
+</blockquote>
+<p>... (truncated)</p>
+</details>
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/prometheus/client_golang/blob/main/CHANGELOG.md">github.com/prometheus/client_golang's changelog</a>.</em></p>
+<blockquote>
+<h2>1.17.0 / 2023-09-27</h2>
+<ul>
+<li>[CHANGE] Minimum required go version is now 1.19 (we also test client_golang against new 1.21 version). <a href="https://redirect.github.com/prometheus/client_golang/issues/1325">#1325</a></li>
+<li>[FEATURE] Add support for Created Timestamps in Counters, Summaries and Historams. <a href="https://redirect.github.com/prometheus/client_golang/issues/1313">#1313</a></li>
+<li>[ENHANCEMENT] Enable detection of a native histogram without observations. <a href="https://redirect.github.com/prometheus/client_golang/issues/1314">#1314</a></li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/prometheus/client_golang/commit/fa1408ee351f6aba15c6d0207f7a0021eb3af406"><code>fa1408e</code></a> Merge pull request <a href="https://redirect.github.com/prometheus/client_golang/issues/1352">#1352</a> from prometheus/arthursens/cut-1.17.0</li>
+<li><a href="https://github.com/prometheus/client_golang/commit/24a72b819f07e2abdd7aa2ed910a2d343c02f9a3"><code>24a72b8</code></a> Add changelog entry for 1.17</li>
+<li><a href="https://github.com/prometheus/client_golang/commit/1bae6c1e6314f6a20be183a7277059630780232a"><code>1bae6c1</code></a> Deprecated comment should begin with &quot;Deprecated:&quot; (<a href="https://redirect.github.com/prometheus/client_golang/issues/1347">#1347</a>)</li>
+<li><a href="https://github.com/prometheus/client_golang/commit/bbab8fe770ef961310d1c7ba045d68f3708e6463"><code>bbab8fe</code></a> Fix typos in comments, tests, and errors (<a href="https://redirect.github.com/prometheus/client_golang/issues/1346">#1346</a>)</li>
+<li><a href="https://github.com/prometheus/client_golang/commit/df7fa494179f42a8c08cf21d95da9ae09564f907"><code>df7fa49</code></a> Extend Counters, Summaries and Histograms with creation timestamp (<a href="https://redirect.github.com/prometheus/client_golang/issues/1313">#1313</a>)</li>
+<li><a href="https://github.com/prometheus/client_golang/commit/74cc26257c40439fda01b450a6def1bd69d77d1b"><code>74cc262</code></a> Add go_godebug_non_default_behavior_tlsmaxrsasize_events_total (<a href="https://redirect.github.com/prometheus/client_golang/issues/1348">#1348</a>)</li>
+<li><a href="https://github.com/prometheus/client_golang/commit/d03abf3a31c973a5bc2c2dc698fb41b661a0f0c5"><code>d03abf3</code></a> Cleanup golangci-lint errcheck (<a href="https://redirect.github.com/prometheus/client_golang/issues/1339">#1339</a>)</li>
+<li><a href="https://github.com/prometheus/client_golang/commit/ca6ba04f2fd1225668db5d01fa5a65bc2e668898"><code>ca6ba04</code></a> Update common Prometheus files (<a href="https://redirect.github.com/prometheus/client_golang/issues/1338">#1338</a>)</li>
+<li><a href="https://github.com/prometheus/client_golang/commit/51d24f86807c24ce866355d0c82258420f571c17"><code>51d24f8</code></a> Update common Prometheus files (<a href="https://redirect.github.com/prometheus/client_golang/issues/1332">#1332</a>)</li>
+<li><a href="https://github.com/prometheus/client_golang/commit/c17edf09ed77d45c7b0df50f2d9979e4f132a09e"><code>c17edf0</code></a> Merge pull request <a href="https://redirect.github.com/prometheus/client_golang/issues/1304">#1304</a> from prometheus/dependabot/go_modules/google.golang....</li>
+<li>Additional commits viewable in <a href="https://github.com/prometheus/client_golang/compare/v1.16.0...v1.17.0">compare view</a></li>
+</ul>
+</details>
+<br />
+
+
+[![Dependabot compatibility score](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=github.com/prometheus/client_golang&package-manager=go_modules&previous-version=1.16.0&new-version=1.17.0)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)
+
+Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting `@dependabot rebase`.
+
+[//]: # (dependabot-automerge-start)
+[//]: # (dependabot-automerge-end)
+
+---
+
+<details>
+<summary>Dependabot commands and options</summary>
+<br />
+
+You can trigger Dependabot actions by commenting on this PR:
+- `@dependabot rebase` will rebase this PR
+- `@dependabot recreate` will recreate this PR, overwriting any edits that have been made to it
+- `@dependabot merge` will merge this PR after your CI passes on it
+- `@dependabot squash and merge` will squash and merge this PR after your CI passes on it
+- `@dependabot cancel merge` will cancel a previously requested merge and block automerging
+- `@dependabot reopen` will reopen this PR if it is closed
+- `@dependabot close` will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually
+- `@dependabot show <dependency name> ignore conditions` will show all of the ignore conditions of the specified dependency
+- `@dependabot ignore this major version` will close this PR and stop Dependabot creating any more for this major version (unless you reopen the PR or upgrade to it yourself)
+- `@dependabot ignore this minor version` will close this PR and stop Dependabot creating any more for this minor version (unless you reopen the PR or upgrade to it yourself)
+- `@dependabot ignore this dependency` will close this PR and stop Dependabot creating any more for this dependency (unless you reopen the PR or upgrade to it yourself)
+
+
+</details>
+
+---
+
+## Discussion
+
+### Comment by @app-sre-bot on October 02, 2023 at 04:58 AM UTC
+
+Can one of the admins verify this patch?
+
+### Comment by @dependabot on October 02, 2023 at 01:58 PM UTC
+
+OK, I won't notify you again about this release, but will get in touch when a new version is available. If you'd rather skip all updates until the next major or minor version, let me know by commenting `@dependabot ignore this major version` or `@dependabot ignore this minor version`. You can also ignore all major, minor, or patch releases for a dependency by adding an [`ignore` condition](https://docs.github.com/en/code-security/supply-chain-security/configuration-options-for-dependency-updates#ignore) with the desired `update_types` to your config file.
+
+If you change your mind, just re-open this PR and I'll resolve any conflicts on it.
+
+---
+
+*Archived from: https://github.com/content-services/content-sources-backend/pull/409*

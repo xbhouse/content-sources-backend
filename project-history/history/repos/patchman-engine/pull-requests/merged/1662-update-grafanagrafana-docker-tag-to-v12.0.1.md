@@ -1,0 +1,220 @@
+---
+type: pull_request
+number: 1662
+title: "Update grafana/grafana Docker tag to v12.0.1"
+state: merged
+author: red-hat-konflux
+created: 2025-05-23T02:38:52Z
+updated: 2025-05-23T02:44:04Z
+closed: 2025-05-23T02:43:59Z
+merged: 2025-05-23T02:43:59Z
+base_branch: master
+head_branch: konflux/mintmaker/master/grafana-monorepo
+labels: []
+url: https://github.com/RedHatInsights/patchman-engine/pull/1662
+---
+
+# Pull Request #1662: Update grafana/grafana Docker tag to v12.0.1
+
+**Author**: @red-hat-konflux
+**Created**: May 23, 2025 at 02:38 AM UTC
+**Status**: Merged
+**Labels**: None
+**Base**: `master` ← **Head**: `konflux/mintmaker/master/grafana-monorepo`
+
+## Description
+
+This PR contains the following updates:
+
+| Package | Type | Update | Change |
+|---|---|---|---|
+| [grafana/grafana](https://redirect.github.com/grafana/grafana) | final | patch | `12.0.0` -> `12.0.1` |
+
+---
+
+> [!WARNING]
+> Some dependencies could not be looked up. Check the warning logs for more information.
+
+---
+
+### Release Notes
+
+<details>
+<summary>grafana/grafana (grafana/grafana)</summary>
+
+### [`v12.0.1`](https://redirect.github.com/grafana/grafana/blob/HEAD/CHANGELOG.md#1201-2025-05-22)
+
+[Compare Source](https://redirect.github.com/grafana/grafana/compare/v12.0.0...v12.0.1)
+
+##### Features and enhancements
+
+-   **Chore:** Bump Go version to 1.24.3 [#&#8203;105101](https://redirect.github.com/grafana/grafana/pull/105101), [@&#8203;macabu](https://redirect.github.com/macabu)
+-   **Dependencies:** Bump github.com/openfga/openfga from v1.8.6 to v1.8.12 [#&#8203;105368](https://redirect.github.com/grafana/grafana/pull/105368), [@&#8203;macabu](https://redirect.github.com/macabu)
+-   **Dependencies:** Unpin and bump github.com/getkin/kin-openapi from v0.126.0 to v0.132.0 [#&#8203;105249](https://redirect.github.com/grafana/grafana/pull/105249), [@&#8203;macabu](https://redirect.github.com/macabu)
+-   **K8s:** Dashboards: Add fine grained access control checks to /apis [#&#8203;104419](https://redirect.github.com/grafana/grafana/pull/104419), [@&#8203;stephaniehingtgen](https://redirect.github.com/stephaniehingtgen)
+
+##### Bug fixes
+
+-   **Dashboard:** Fix Panel Explore link subpath duplication ([#&#8203;104952](https://redirect.github.com/grafana/grafana/issues/104952)) [#&#8203;105056](https://redirect.github.com/grafana/grafana/pull/105056), [@&#8203;axelavargas](https://redirect.github.com/axelavargas)
+-   **Dashboard:** Fixes issue with row repeats and first row [#&#8203;104469](https://redirect.github.com/grafana/grafana/pull/104469), [@&#8203;torkelo](https://redirect.github.com/torkelo)
+-   **Graphite:** Ensure template variables are interpolated correctly [#&#8203;105389](https://redirect.github.com/grafana/grafana/pull/105389), [@&#8203;aangelisc](https://redirect.github.com/aangelisc)
+-   **Graphite:** Fix Graphite series interpolation [#&#8203;104516](https://redirect.github.com/grafana/grafana/pull/104516), [@&#8203;aangelisc](https://redirect.github.com/aangelisc)
+-   **InfluxDB:** Fix nested variable interpolation [#&#8203;104176](https://redirect.github.com/grafana/grafana/pull/104176), [@&#8203;aangelisc](https://redirect.github.com/aangelisc)
+-   **MetricsDrilldown:** Restore link to Metrics Drilldown from Explore [#&#8203;104073](https://redirect.github.com/grafana/grafana/pull/104073), [@&#8203;NWRichmond](https://redirect.github.com/NWRichmond)
+-   **NestedFolderPicker:** Fix scroll jumps back to top [#&#8203;105769](https://redirect.github.com/grafana/grafana/pull/105769), [@&#8203;samsch](https://redirect.github.com/samsch)
+-   **Preferences:** Disable the save button whilst saving preferences [#&#8203;105612](https://redirect.github.com/grafana/grafana/pull/105612), [@&#8203;ashharrison90](https://redirect.github.com/ashharrison90)
+-   **Prometheus:** Fix semver import path [#&#8203;104945](https://redirect.github.com/grafana/grafana/pull/104945), [@&#8203;jackw](https://redirect.github.com/jackw)
+-   **Themes:** Prevent duplicated API call in drawer [#&#8203;105611](https://redirect.github.com/grafana/grafana/pull/105611), [@&#8203;ashharrison90](https://redirect.github.com/ashharrison90)
+-   **XYChart:** Coerce threshold steps to numbers [#&#8203;104492](https://redirect.github.com/grafana/grafana/pull/104492), [@&#8203;leeoniya](https://redirect.github.com/leeoniya)
+-   **Security:** Fix CVE-2025-4123
+-   **Security:** Fix CVE-2025-3580
+
+<!-- 12.0.1 END -->
+
+<!-- 11.6.2 START -->
+
+</details>
+
+---
+
+### Configuration
+
+📅 **Schedule**: Branch creation - "before 5am" in timezone Europe/Prague, Automerge - At any time (no schedule defined).
+
+🚦 **Automerge**: Enabled.
+
+♻ **Rebasing**: Whenever PR is behind base branch, or you tick the rebase/retry checkbox.
+
+🔕 **Ignore**: Close this PR and you won't be reminded about this update again.
+
+---
+
+ - [ ] <!-- rebase-check -->If you want to rebase/retry this PR, check this box
+
+---
+
+To execute skipped test pipelines write comment `/ok-to-test`.
+
+This PR has been generated by [MintMaker](https://redirect.github.com/konflux-ci/mintmaker) (powered by [Renovate Bot](https://redirect.github.com/renovatebot/renovate)).
+<!--renovate-debug:eyJjcmVhdGVkSW5WZXIiOiIzOS4yNjQuMC1ycG0iLCJ1cGRhdGVkSW5WZXIiOiIzOS4yNjQuMC1ycG0iLCJ0YXJnZXRCcmFuY2giOiJtYXN0ZXIiLCJsYWJlbHMiOltdfQ==-->
+
+## Summary by Sourcery
+
+Build:
+- Bump grafana/grafana Docker tag from v12.0.0 to v12.0.1
+
+---
+
+## Discussion
+
+### Comment by @jira-linking on May 23, 2025 at 02:38 AM UTC
+
+Commits missing Jira IDs:
+3ec56cd50469f49eeee6912ea7996219478416a5
+
+
+### Comment by @sourcery-ai on May 23, 2025 at 02:39 AM UTC
+
+<!-- Generated by sourcery-ai[bot]: start review_guide -->
+
+## Reviewer's Guide
+
+This PR patches the Grafana Docker setup by updating the base image tag from v12.0.0 to v12.0.1 to incorporate the latest bug fixes and enhancements.
+
+### File-Level Changes
+
+| Change | Details | Files |
+| ------ | ------- | ----- |
+| Bump Grafana Docker base image version | <ul><li>Update FROM instruction to pull grafana/grafana:12.0.1 instead of 12.0.0</li></ul> | `dev/grafana/Dockerfile` |
+
+---
+
+<details>
+<summary>Tips and commands</summary>
+
+#### Interacting with Sourcery
+
+- **Trigger a new review:** Comment `@sourcery-ai review` on the pull request.
+- **Continue discussions:** Reply directly to Sourcery's review comments.
+- **Generate a GitHub issue from a review comment:** Ask Sourcery to create an
+  issue from a review comment by replying to it. You can also reply to a
+  review comment with `@sourcery-ai issue` to create an issue from it.
+- **Generate a pull request title:** Write `@sourcery-ai` anywhere in the pull
+  request title to generate a title at any time. You can also comment
+  `@sourcery-ai title` on the pull request to (re-)generate the title at any time.
+- **Generate a pull request summary:** Write `@sourcery-ai summary` anywhere in
+  the pull request body to generate a PR summary at any time exactly where you
+  want it. You can also comment `@sourcery-ai summary` on the pull request to
+  (re-)generate the summary at any time.
+- **Generate reviewer's guide:** Comment `@sourcery-ai guide` on the pull
+  request to (re-)generate the reviewer's guide at any time.
+- **Resolve all Sourcery comments:** Comment `@sourcery-ai resolve` on the
+  pull request to resolve all Sourcery comments. Useful if you've already
+  addressed all the comments and don't want to see them anymore.
+- **Dismiss all Sourcery reviews:** Comment `@sourcery-ai dismiss` on the pull
+  request to dismiss all existing Sourcery reviews. Especially useful if you
+  want to start fresh with a new review - don't forget to comment
+  `@sourcery-ai review` to trigger a new review!
+
+#### Customizing Your Experience
+
+Access your [dashboard](https://app.sourcery.ai) to:
+- Enable or disable review features such as the Sourcery-generated pull request
+  summary, the reviewer's guide, and others.
+- Change the review language.
+- Add, remove or edit custom review instructions.
+- Adjust other review settings.
+
+#### Getting Help
+
+- [Contact our support team](mailto:support@sourcery.ai) for questions or feedback.
+- Visit our [documentation](https://docs.sourcery.ai) for detailed guides and information.
+- Keep in touch with the Sourcery team by following us on [X/Twitter](https://x.com/SourceryAI), [LinkedIn](https://www.linkedin.com/company/sourcery-ai/) or [GitHub](https://github.com/sourcery-ai).
+
+</details>
+
+<!-- Generated by sourcery-ai[bot]: end review_guide -->
+
+### Comment by @codecov-commenter on May 23, 2025 at 02:44 AM UTC
+
+## [Codecov](https://app.codecov.io/gh/RedHatInsights/patchman-engine/pull/1662?dropdown=coverage&src=pr&el=h1&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights) Report
+All modified and coverable lines are covered by tests :white_check_mark:
+> Project coverage is 58.17%. Comparing base [(`ea62f67`)](https://app.codecov.io/gh/RedHatInsights/patchman-engine/commit/ea62f67a63b72c79cbd6dbd69b48e6733b719a02?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights) to head [(`3ec56cd`)](https://app.codecov.io/gh/RedHatInsights/patchman-engine/commit/3ec56cd50469f49eeee6912ea7996219478416a5?dropdown=coverage&el=desc&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights).
+> Report is 1 commits behind head on master.
+
+<details><summary>Additional details and impacted files</summary>
+
+
+```diff
+@@            Coverage Diff             @@
+##           master    #1662      +/-   ##
+==========================================
+- Coverage   58.21%   58.17%   -0.05%     
+==========================================
+  Files         146      146              
+  Lines       11397    11397              
+==========================================
+- Hits         6635     6630       -5     
+- Misses       4175     4180       +5     
+  Partials      587      587              
+```
+
+| [Flag](https://app.codecov.io/gh/RedHatInsights/patchman-engine/pull/1662/flags?src=pr&el=flags&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights) | Coverage Δ | |
+|---|---|---|
+| [unittests](https://app.codecov.io/gh/RedHatInsights/patchman-engine/pull/1662/flags?src=pr&el=flag&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights) | `58.17% <ø> (-0.05%)` | :arrow_down: |
+
+Flags with carried forward coverage won't be shown. [Click here](https://docs.codecov.io/docs/carryforward-flags?utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights#carryforward-flags-in-the-pull-request-comment) to find out more.
+
+</details>
+
+[:umbrella: View full report in Codecov by Sentry](https://app.codecov.io/gh/RedHatInsights/patchman-engine/pull/1662?dropdown=coverage&src=pr&el=continue&utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights).   
+:loudspeaker: Have feedback on the report? [Share it here](https://about.codecov.io/codecov-pr-comment-feedback/?utm_medium=referral&utm_source=github&utm_content=comment&utm_campaign=pr+comments&utm_term=RedHatInsights).
+
+<details><summary> :rocket: New features to boost your workflow: </summary>
+
+- :snowflake: [Test Analytics](https://docs.codecov.com/docs/test-analytics): Detect flaky tests, report on failures, and find test suite problems.
+</details>
+
+---
+
+*Archived from: https://github.com/RedHatInsights/patchman-engine/pull/1662*

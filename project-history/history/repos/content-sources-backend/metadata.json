@@ -1,0 +1,14 @@
+{
+  "repository": "content-services/content-sources-backend",
+  "fetched_at": "2026-06-28T17:55:03.828432Z",
+  "stats": {
+    "total_issues": 1,
+    "open_issues": 0,
+    "closed_issues": 1,
+    "total_prs": 1550,
+    "open_prs": 5,
+    "merged_prs": 1320,
+    "closed_prs": 225,
+    "api_calls_made": 17
+  }
+}

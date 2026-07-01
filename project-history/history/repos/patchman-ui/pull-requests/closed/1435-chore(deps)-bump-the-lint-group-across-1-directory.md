@@ -1,0 +1,497 @@
+---
+type: pull_request
+number: 1435
+title: "chore(deps): bump the lint group across 1 directory with 6 updates"
+state: closed
+author: dependabot
+created: 2025-11-10T18:11:34Z
+updated: 2025-12-08T08:36:57Z
+closed: 2025-12-08T08:36:56Z
+base_branch: master
+head_branch: dependabot/npm_and_yarn/lint-8c45cb524f
+labels: ["dependencies", "major"]
+url: https://github.com/RedHatInsights/patchman-ui/pull/1435
+---
+
+# Pull Request #1435: chore(deps): bump the lint group across 1 directory with 6 updates
+
+**Author**: @dependabot
+**Created**: November 10, 2025 at 06:11 PM UTC
+**Status**: Closed
+**Labels**: `dependencies`, `major`
+**Base**: `master` ← **Head**: `dependabot/npm_and_yarn/lint-8c45cb524f`
+
+## Description
+
+Bumps the lint group with 6 updates in the / directory:
+
+| Package | From | To |
+| --- | --- | --- |
+| [eslint](https://github.com/eslint/eslint) | `9.37.0` | `9.39.1` |
+| [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) | `9.1.2` | `10.1.8` |
+| [eslint-plugin-cypress](https://github.com/cypress-io/eslint-plugin-cypress) | `4.3.0` | `5.2.0` |
+| [eslint-plugin-unused-imports](https://github.com/sweepline/eslint-plugin-unused-imports) | `4.2.0` | `4.3.0` |
+| [stylelint](https://github.com/stylelint/stylelint) | `16.23.1` | `16.25.0` |
+| [stylelint-config-recommended-scss](https://github.com/stylelint-scss/stylelint-config-recommended-scss) | `14.1.0` | `16.0.2` |
+
+
+Updates `eslint` from 9.37.0 to 9.39.1
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/eslint/eslint/releases">eslint's releases</a>.</em></p>
+<blockquote>
+<h2>v9.39.1</h2>
+<h2>Bug Fixes</h2>
+<ul>
+<li><a href="https://github.com/eslint/eslint/commit/650753ee3976784343ceb40170619dab1aa9fe0d"><code>650753e</code></a> fix: Only pass node to JS lang visitor methods (<a href="https://redirect.github.com/eslint/eslint/issues/20283">#20283</a>) (Nicholas C. Zakas)</li>
+</ul>
+<h2>Documentation</h2>
+<ul>
+<li><a href="https://github.com/eslint/eslint/commit/51b51f4f1ce82ef63264c4e45d9ef579bcd73f8e"><code>51b51f4</code></a> docs: add a section on when to use extends vs cascading (<a href="https://redirect.github.com/eslint/eslint/issues/20268">#20268</a>) (Tanuj Kanti)</li>
+<li><a href="https://github.com/eslint/eslint/commit/b44d42699dcd1729b7ecb50ca70e4c1c17f551f1"><code>b44d426</code></a> docs: Update README (GitHub Actions Bot)</li>
+</ul>
+<h2>Chores</h2>
+<ul>
+<li><a href="https://github.com/eslint/eslint/commit/92db329211c8da5ce8340a4d4c05ce9c12845381"><code>92db329</code></a> chore: update <code>@eslint/js</code> version to 9.39.1 (<a href="https://redirect.github.com/eslint/eslint/issues/20284">#20284</a>) (Francesco Trotta)</li>
+<li><a href="https://github.com/eslint/eslint/commit/c7ebefc9eaf99b76b30b0d3cf9960807a47367c4"><code>c7ebefc</code></a> chore: package.json update for <code>@​eslint/js</code> release (Jenkins)</li>
+<li><a href="https://github.com/eslint/eslint/commit/61778f6ca33c0f63962a91d6a75a4fa5db9f47d2"><code>61778f6</code></a> chore: update eslint-config-eslint dependency <code>@​eslint/js</code> to ^9.39.0 (<a href="https://redirect.github.com/eslint/eslint/issues/20275">#20275</a>) (renovate[bot])</li>
+<li><a href="https://github.com/eslint/eslint/commit/d9ca2fcd9ad63331bfd329a69534e1ff04f231e8"><code>d9ca2fc</code></a> ci: Add rangeStrategy to eslint group in renovate config (<a href="https://redirect.github.com/eslint/eslint/issues/20266">#20266</a>) (唯然)</li>
+<li><a href="https://github.com/eslint/eslint/commit/009e5076ff5a4bd845f55e17676e3bb88f47c280"><code>009e507</code></a> test: fix version tests for ESLint v10 (<a href="https://redirect.github.com/eslint/eslint/issues/20274">#20274</a>) (Milos Djermanovic)</li>
+</ul>
+<h2>v9.39.0</h2>
+<h2>Features</h2>
+<ul>
+<li><a href="https://github.com/eslint/eslint/commit/cc57d87a3f119e9d39c55e044e526ae067fa31ce"><code>cc57d87</code></a> feat: update error loc to key in <code>no-dupe-class-members</code> (<a href="https://redirect.github.com/eslint/eslint/issues/20259">#20259</a>) (Tanuj Kanti)</li>
+<li><a href="https://github.com/eslint/eslint/commit/126552fcf35da3ddcefa527db06dabc54c04041c"><code>126552f</code></a> feat: update error location in <code>for-direction</code> and <code>no-dupe-args</code> (<a href="https://redirect.github.com/eslint/eslint/issues/20258">#20258</a>) (Tanuj Kanti)</li>
+<li><a href="https://github.com/eslint/eslint/commit/167d0970d3802a66910e9820f31dcd717fab0b2a"><code>167d097</code></a> feat: update <code>complexity</code> rule to highlight only static block header (<a href="https://redirect.github.com/eslint/eslint/issues/20245">#20245</a>) (jaymarvelz)</li>
+</ul>
+<h2>Bug Fixes</h2>
+<ul>
+<li><a href="https://github.com/eslint/eslint/commit/15f5c7c168d0698683943f51dd617f14a5e6815c"><code>15f5c7c</code></a> fix: forward traversal <code>step.args</code> to visitors (<a href="https://redirect.github.com/eslint/eslint/issues/20253">#20253</a>) (jaymarvelz)</li>
+<li><a href="https://github.com/eslint/eslint/commit/5a1a534e877f7c4c992885867f923df307c3929d"><code>5a1a534</code></a> fix: allow JSDoc comments in object-shorthand rule (<a href="https://redirect.github.com/eslint/eslint/issues/20167">#20167</a>) (Nitin Kumar)</li>
+<li><a href="https://github.com/eslint/eslint/commit/e86b813eb660f1a5adc8e143a70d9b683cd12362"><code>e86b813</code></a> fix: Use more types from <code>@​eslint/core</code> (<a href="https://redirect.github.com/eslint/eslint/issues/20257">#20257</a>) (Nicholas C. Zakas)</li>
+<li><a href="https://github.com/eslint/eslint/commit/927272d1f0d5683b029b729d368a96527f283323"><code>927272d</code></a> fix: correct <code>Scope</code> typings (<a href="https://redirect.github.com/eslint/eslint/issues/20198">#20198</a>) (jaymarvelz)</li>
+<li><a href="https://github.com/eslint/eslint/commit/37f76d9c539bb6fc816fedb7be4486b71a58620a"><code>37f76d9</code></a> fix: use <code>AST.Program</code> type for Program node (<a href="https://redirect.github.com/eslint/eslint/issues/20244">#20244</a>) (Francesco Trotta)</li>
+<li><a href="https://github.com/eslint/eslint/commit/ae07f0b3334ebd22ae2e7b09bca5973b96aa9768"><code>ae07f0b</code></a> fix: unify timing report for concurrent linting (<a href="https://redirect.github.com/eslint/eslint/issues/20188">#20188</a>) (jaymarvelz)</li>
+<li><a href="https://github.com/eslint/eslint/commit/b165d471be6062f4475b972155b02654a974a0e9"><code>b165d47</code></a> fix: correct <code>Rule</code> typings (<a href="https://redirect.github.com/eslint/eslint/issues/20199">#20199</a>) (jaymarvelz)</li>
+<li><a href="https://github.com/eslint/eslint/commit/fb97cda70d87286a7dbd2457f578ef578d6905e8"><code>fb97cda</code></a> fix: improve error message for missing fix function in suggestions (<a href="https://redirect.github.com/eslint/eslint/issues/20218">#20218</a>) (jaymarvelz)</li>
+</ul>
+<h2>Documentation</h2>
+<ul>
+<li><a href="https://github.com/eslint/eslint/commit/d3e81e30ee6be5a21151b7a17ef10a714b6059c0"><code>d3e81e3</code></a> docs: Always recommend to include a files property (<a href="https://redirect.github.com/eslint/eslint/issues/20158">#20158</a>) (Percy Ma)</li>
+<li><a href="https://github.com/eslint/eslint/commit/0f0385f1404dcadaba4812120b1ad02334dbd66a"><code>0f0385f</code></a> docs: use consistent naming recommendation (<a href="https://redirect.github.com/eslint/eslint/issues/20250">#20250</a>) (Alex M. Spieslechner)</li>
+<li><a href="https://github.com/eslint/eslint/commit/a3b145609ac649fac837c8c0515cbb2a9321ca40"><code>a3b1456</code></a> docs: Update README (GitHub Actions Bot)</li>
+<li><a href="https://github.com/eslint/eslint/commit/cf5f2dd58dd98084a21da04fe7b9054b9478d552"><code>cf5f2dd</code></a> docs: fix correct tag of <code>no-useless-constructor</code> (<a href="https://redirect.github.com/eslint/eslint/issues/20255">#20255</a>) (Tanuj Kanti)</li>
+<li><a href="https://github.com/eslint/eslint/commit/10b995c8e5473de8d66d3cd99d816e046f35e3ec"><code>10b995c</code></a> docs: add TS options and examples for <code>nofunc</code> in <code>no-use-before-define</code> (<a href="https://redirect.github.com/eslint/eslint/issues/20249">#20249</a>) (Tanuj Kanti)</li>
+<li><a href="https://github.com/eslint/eslint/commit/2584187e4a305ea7a98e1a5bd4dca2a60ad132f8"><code>2584187</code></a> docs: remove repetitive word in comment (<a href="https://redirect.github.com/eslint/eslint/issues/20242">#20242</a>) (reddaisyy)</li>
+<li><a href="https://github.com/eslint/eslint/commit/637216bd4f2aae7c928ad04a4e40eecffb50c9e5"><code>637216b</code></a> docs: update CLI flags migration instructions (<a href="https://redirect.github.com/eslint/eslint/issues/20238">#20238</a>) (jaymarvelz)</li>
+<li><a href="https://github.com/eslint/eslint/commit/e7cda3bdf1bdd664e6033503a3315ad81736b200"><code>e7cda3b</code></a> docs: Update README (GitHub Actions Bot)</li>
+<li><a href="https://github.com/eslint/eslint/commit/7b9446f7cc2054aa2cdf8e6225f4ac15a03671a8"><code>7b9446f</code></a> docs: handle empty flags sections on the feature flags page (<a href="https://redirect.github.com/eslint/eslint/issues/20222">#20222</a>) (sethamus)</li>
+</ul>
+<h2>Chores</h2>
+<ul>
+<li><a href="https://github.com/eslint/eslint/commit/dfe3c1b2034228765c48c8a445554223767dd16d"><code>dfe3c1b</code></a> chore: update <code>@eslint/js</code> version to 9.39.0 (<a href="https://redirect.github.com/eslint/eslint/issues/20270">#20270</a>) (Francesco Trotta)</li>
+<li><a href="https://github.com/eslint/eslint/commit/2375a6de8263393c129d41cac1b407b40111a73c"><code>2375a6d</code></a> chore: package.json update for <code>@​eslint/js</code> release (Jenkins)</li>
+<li><a href="https://github.com/eslint/eslint/commit/a1f4e52d67c94bef61edd1607dcd130047c1baf0"><code>a1f4e52</code></a> chore: update <code>@eslint</code> dependencies (<a href="https://redirect.github.com/eslint/eslint/issues/20265">#20265</a>) (Francesco Trotta)</li>
+<li><a href="https://github.com/eslint/eslint/commit/c7d32298482752eeac9fb46378d4f1ea095f3836"><code>c7d3229</code></a> chore: update dependency <code>@​eslint/core</code> to ^0.17.0 (<a href="https://redirect.github.com/eslint/eslint/issues/20256">#20256</a>) (renovate[bot])</li>
+<li><a href="https://github.com/eslint/eslint/commit/27549bc774c7c2dc5c569070a3e87c62f602bf7d"><code>27549bc</code></a> chore: update fuzz testing to not error if code sample minimizer fails (<a href="https://redirect.github.com/eslint/eslint/issues/20252">#20252</a>) (Milos Djermanovic)</li>
+<li><a href="https://github.com/eslint/eslint/commit/a1370ee40e9d8e0e41843f3278cd745fc1ad543f"><code>a1370ee</code></a> ci: bump actions/setup-node from 5 to 6 (<a href="https://redirect.github.com/eslint/eslint/issues/20230">#20230</a>) (dependabot[bot])</li>
+<li><a href="https://github.com/eslint/eslint/commit/9e7fad4a1867709060686d03e0ec1d0d69671cfb"><code>9e7fad4</code></a> chore: add script to auto-generate eslint:recommended configuration (<a href="https://redirect.github.com/eslint/eslint/issues/20208">#20208</a>) (唯然)</li>
+</ul>
+<!-- raw HTML omitted -->
+</blockquote>
+<p>... (truncated)</p>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/eslint/eslint/commit/e2772811a8595d161870835ff04822b25a2cdf45"><code>e277281</code></a> 9.39.1</li>
+<li><a href="https://github.com/eslint/eslint/commit/4cdf397b30b2b749865ea0fcf4d30eb8ba458896"><code>4cdf397</code></a> Build: changelog update for 9.39.1</li>
+<li><a href="https://github.com/eslint/eslint/commit/92db329211c8da5ce8340a4d4c05ce9c12845381"><code>92db329</code></a> chore: update <code>@eslint/js</code> version to 9.39.1 (<a href="https://redirect.github.com/eslint/eslint/issues/20284">#20284</a>)</li>
+<li><a href="https://github.com/eslint/eslint/commit/c7ebefc9eaf99b76b30b0d3cf9960807a47367c4"><code>c7ebefc</code></a> chore: package.json update for <code>@​eslint/js</code> release</li>
+<li><a href="https://github.com/eslint/eslint/commit/650753ee3976784343ceb40170619dab1aa9fe0d"><code>650753e</code></a> fix: Only pass node to JS lang visitor methods (<a href="https://redirect.github.com/eslint/eslint/issues/20283">#20283</a>)</li>
+<li><a href="https://github.com/eslint/eslint/commit/51b51f4f1ce82ef63264c4e45d9ef579bcd73f8e"><code>51b51f4</code></a> docs: add a section on when to use extends vs cascading (<a href="https://redirect.github.com/eslint/eslint/issues/20268">#20268</a>)</li>
+<li><a href="https://github.com/eslint/eslint/commit/61778f6ca33c0f63962a91d6a75a4fa5db9f47d2"><code>61778f6</code></a> chore: update eslint-config-eslint dependency <code>@​eslint/js</code> to ^9.39.0 (<a href="https://redirect.github.com/eslint/eslint/issues/20275">#20275</a>)</li>
+<li><a href="https://github.com/eslint/eslint/commit/d9ca2fcd9ad63331bfd329a69534e1ff04f231e8"><code>d9ca2fc</code></a> ci: Add rangeStrategy to eslint group in renovate config (<a href="https://redirect.github.com/eslint/eslint/issues/20266">#20266</a>)</li>
+<li><a href="https://github.com/eslint/eslint/commit/009e5076ff5a4bd845f55e17676e3bb88f47c280"><code>009e507</code></a> test: fix version tests for ESLint v10 (<a href="https://redirect.github.com/eslint/eslint/issues/20274">#20274</a>)</li>
+<li><a href="https://github.com/eslint/eslint/commit/b44d42699dcd1729b7ecb50ca70e4c1c17f551f1"><code>b44d426</code></a> docs: Update README</li>
+<li>Additional commits viewable in <a href="https://github.com/eslint/eslint/compare/v9.37.0...v9.39.1">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `eslint-config-prettier` from 9.1.2 to 10.1.8
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/prettier/eslint-config-prettier/releases">eslint-config-prettier's releases</a>.</em></p>
+<blockquote>
+<h2>v10.1.8</h2>
+<p>republish latest version</p>
+<p><strong>Full Changelog</strong>: <a href="https://github.com/prettier/eslint-config-prettier/compare/v10.1.5...v10.1.8">https://github.com/prettier/eslint-config-prettier/compare/v10.1.5...v10.1.8</a></p>
+<h2>v10.1.5</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li><a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/332">#332</a> <a href="https://github.com/prettier/eslint-config-prettier/commit/60fef02574467d31d10ff47ecb567d378483c9d4"><code>60fef02</code></a> Thanks <a href="https://github.com/JounQin"><code>@​JounQin</code></a>! - chore: add <code>funding</code> field into <code>package.json</code></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a href="https://github.com/prettier/eslint-config-prettier/compare/v10.1.4...v10.1.5">https://github.com/prettier/eslint-config-prettier/compare/v10.1.4...v10.1.5</a></p>
+<h2>v10.1.4</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li><a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/328">#328</a> <a href="https://github.com/prettier/eslint-config-prettier/commit/94b47999e7eb13b703835729331376cef598b850"><code>94b4799</code></a> Thanks <a href="https://github.com/silvenon"><code>@​silvenon</code></a>! - fix(cli): do not crash on no rules configured</li>
+</ul>
+<p><strong>Full Changelog</strong>: <a href="https://github.com/prettier/eslint-config-prettier/compare/v10.1.3...v10.1.4">https://github.com/prettier/eslint-config-prettier/compare/v10.1.3...v10.1.4</a></p>
+<h2>v10.1.3</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li><a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/325">#325</a> <a href="https://github.com/prettier/eslint-config-prettier/commit/4e95a1d50073f1a24f004239ad6e1a4ffa8476df"><code>4e95a1d</code></a> Thanks <a href="https://github.com/pilikan"><code>@​pilikan</code></a>! - fix: this package is <code>commonjs</code>, align its types correctly</li>
+</ul>
+<h3>New Contributors</h3>
+<ul>
+<li><a href="https://github.com/pilikan"><code>@​pilikan</code></a> made their first contribution in <a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/325">prettier/eslint-config-prettier#325</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a href="https://github.com/prettier/eslint-config-prettier/compare/v10.1.2...v10.1.3">https://github.com/prettier/eslint-config-prettier/compare/v10.1.2...v10.1.3</a></p>
+<h2>v10.1.2</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li><a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/321">#321</a> <a href="https://github.com/prettier/eslint-config-prettier/commit/a8768bfe54a91d08f0cef8705f91de2883436bb0"><code>a8768bf</code></a> Thanks <a href="https://github.com/Fdawgs"><code>@​Fdawgs</code></a>! - chore(package): add homepage for some 3rd-party registry - see <a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/321">#321</a> for more details</li>
+</ul>
+<h2>v10.1.1</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li>
+<p><a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/309">#309</a> <a href="https://github.com/prettier/eslint-config-prettier/commit/eb56a5e09964e49045bccde3c616275eb0a0902d"><code>eb56a5e</code></a> Thanks <a href="https://github.com/JounQin"><code>@​JounQin</code></a>! - fix: separate the <code>/flat</code> entry for compatibility</p>
+<p>For flat config users, the previous <code>&quot;eslint-config-prettier&quot;</code> entry still works, but <code>&quot;eslint-config-prettier/flat&quot;</code> adds a new <code>name</code> property for <a href="https://eslint.org/blog/2024/04/eslint-config-inspector/">config-inspector</a>, we just can't add it for the default entry for compatibility.</p>
+<p>See also <a href="https://redirect.github.com/prettier/eslint-config-prettier/issues/308">prettier/eslint-config-prettier#308</a></p>
+<pre lang="ts"><code>// before
+import eslintConfigPrettier from &quot;eslint-config-prettier&quot;;
+<p>// after<br />
+import eslintConfigPrettier from &quot;eslint-config-prettier/flat&quot;;<br />
+</code></pre></p>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+</blockquote>
+<p>... (truncated)</p>
+</details>
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/prettier/eslint-config-prettier/blob/main/CHANGELOG.md">eslint-config-prettier's changelog</a>.</em></p>
+<blockquote>
+<h1>eslint-config-prettier</h1>
+<h2>10.1.5</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li><a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/332">#332</a> <a href="https://github.com/prettier/eslint-config-prettier/commit/60fef02574467d31d10ff47ecb567d378483c9d4"><code>60fef02</code></a> Thanks <a href="https://github.com/JounQin"><code>@​JounQin</code></a>! - chore: add <code>funding</code> field into <code>package.json</code></li>
+</ul>
+<h2>10.1.4</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li><a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/328">#328</a> <a href="https://github.com/prettier/eslint-config-prettier/commit/94b47999e7eb13b703835729331376cef598b850"><code>94b4799</code></a> Thanks <a href="https://github.com/silvenon"><code>@​silvenon</code></a>! - fix(cli): do not crash on no rules configured</li>
+</ul>
+<h2>10.1.3</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li><a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/325">#325</a> <a href="https://github.com/prettier/eslint-config-prettier/commit/4e95a1d50073f1a24f004239ad6e1a4ffa8476df"><code>4e95a1d</code></a> Thanks <a href="https://github.com/pilikan"><code>@​pilikan</code></a>! - fix: this package is <code>commonjs</code>, align its types correctly</li>
+</ul>
+<h2>10.1.2</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li><a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/321">#321</a> <a href="https://github.com/prettier/eslint-config-prettier/commit/a8768bfe54a91d08f0cef8705f91de2883436bb0"><code>a8768bf</code></a> Thanks <a href="https://github.com/Fdawgs"><code>@​Fdawgs</code></a>! - chore(package): add homepage for some 3rd-party registry - see <a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/321">#321</a> for more details</li>
+</ul>
+<h2>10.1.1</h2>
+<h3>Patch Changes</h3>
+<ul>
+<li>
+<p><a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/309">#309</a> <a href="https://github.com/prettier/eslint-config-prettier/commit/eb56a5e09964e49045bccde3c616275eb0a0902d"><code>eb56a5e</code></a> Thanks <a href="https://github.com/JounQin"><code>@​JounQin</code></a>! - fix: separate the <code>/flat</code> entry for compatibility</p>
+<p>For flat config users, the previous <code>&quot;eslint-config-prettier&quot;</code> entry still works, but <code>&quot;eslint-config-prettier/flat&quot;</code> adds a new <code>name</code> property for <a href="https://eslint.org/blog/2024/04/eslint-config-inspector/">config-inspector</a>, we just can't add it for the default entry for compatibility.</p>
+<p>See also <a href="https://redirect.github.com/prettier/eslint-config-prettier/issues/308">prettier/eslint-config-prettier#308</a></p>
+<pre lang="ts"><code>// before
+import eslintConfigPrettier from &quot;eslint-config-prettier&quot;;
+<p>// after<br />
+import eslintConfigPrettier from &quot;eslint-config-prettier/flat&quot;;<br />
+</code></pre></p>
+</li>
+</ul>
+<h2>10.1.0</h2>
+<h3>Minor Changes</h3>
+<ul>
+<li><a href="https://redirect.github.com/prettier/eslint-config-prettier/pull/306">#306</a> <a href="https://github.com/prettier/eslint-config-prettier/commit/56e2e3466391d0fdfc200e42130309c687aaab53"><code>56e2e34</code></a> Thanks <a href="https://github.com/JounQin"><code>@​JounQin</code></a>! - feat: migrate to exports field</li>
+</ul>
+<!-- raw HTML omitted -->
+</blockquote>
+<p>... (truncated)</p>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li>See full diff in <a href="https://github.com/prettier/eslint-config-prettier/commits/v10.1.8">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `eslint-plugin-cypress` from 4.3.0 to 5.2.0
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/cypress-io/eslint-plugin-cypress/releases">eslint-plugin-cypress's releases</a>.</em></p>
+<blockquote>
+<h2>v5.2.0</h2>
+<h1><a href="https://github.com/cypress-io/eslint-plugin-cypress/compare/v5.1.1...v5.2.0">5.2.0</a> (2025-10-01)</h1>
+<h3>Features</h3>
+<ul>
+<li>add type declaration file (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/279">#279</a>) (<a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/006d74f8a5c1456943584f9528b1c020ba3db874">006d74f</a>)</li>
+</ul>
+<h2>v5.1.1</h2>
+<h2><a href="https://github.com/cypress-io/eslint-plugin-cypress/compare/v5.1.0...v5.1.1">5.1.1</a> (2025-08-14)</h2>
+<h3>Bug Fixes</h3>
+<ul>
+<li>dont throw warning on variable data selector (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/272">#272</a>) (<a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/0508b75a745bb4f5cc4d64cfbb9206543d407ac7">0508b75</a>)</li>
+</ul>
+<h2>v5.1.0</h2>
+<h1><a href="https://github.com/cypress-io/eslint-plugin-cypress/compare/v5.0.1...v5.1.0">5.1.0</a> (2025-06-03)</h1>
+<h3>Features</h3>
+<ul>
+<li>publish only core files to npm package (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/263">#263</a>) (<a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/e622a58bf7882ad00cd928dc7e83b2660b33483a">e622a58</a>)</li>
+</ul>
+<h2>v5.0.1</h2>
+<h2><a href="https://github.com/cypress-io/eslint-plugin-cypress/compare/v5.0.0...v5.0.1">5.0.1</a> (2025-05-30)</h2>
+<h3>Bug Fixes</h3>
+<ul>
+<li><strong>stylistic:</strong> apply javascript formatting conventions (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/262">#262</a>) (<a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/bbd33fdc74303c608892e071c15627d0cb56ebdb">bbd33fd</a>)</li>
+</ul>
+<h2>v5.0.0</h2>
+<h1><a href="https://github.com/cypress-io/eslint-plugin-cypress/compare/v4.3.0...v5.0.0">5.0.0</a> (2025-05-29)</h1>
+<h3>Breaking Changes</h3>
+<ul>
+<li>Support for non-flat legacy configurations is removed. The default configuration <code>eslint-plugin-cypress</code> now resolves to the flat configuration instead of to the legacy configuration</li>
+</ul>
+<h3>Deprecations</h3>
+<ul>
+<li><code>eslint-plugin-cypress/flat</code> is deprecated and should be replaced by <code>eslint-plugin-cypress</code></li>
+</ul>
+<h3>Other</h3>
+<ul>
+<li>remove legacy eslintrc configuration (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/260">#260</a>) (<a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/618bd21acdb2288e7ab8fc03c7abc0423270a3b8">618bd21</a>)</li>
+<li>globals dependency is updated to 16.2.0</li>
+<li>semantic-release dependency is update to 24.2.5</li>
+</ul>
+<!-- raw HTML omitted -->
+</blockquote>
+<p>... (truncated)</p>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/006d74f8a5c1456943584f9528b1c020ba3db874"><code>006d74f</code></a> feat: add type declaration file (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/279">#279</a>)</li>
+<li><a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/9015c2e68ac08a8a81ed2a7480b3a7acac62f6f3"><code>9015c2e</code></a> chore(docs): update documents and example to use defineConfig() (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/277">#277</a>)</li>
+<li><a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/47d0a20daa5b17aae62d457081b47d23f673cd2a"><code>47d0a20</code></a> chore(deps): update eslint-plugin-eslint-plugin to 7.0.0 (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/275">#275</a>)</li>
+<li><a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/9f392c6eb694d1a7f52432a32880ad182545664a"><code>9f392c6</code></a> chore(deps): update all devDependencies (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/274">#274</a>)</li>
+<li><a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/cd968c36352eeabe947c2a9c61e43de9f3675b0a"><code>cd968c3</code></a> chore: update test-project for Cypress 15.0.0 (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/273">#273</a>)</li>
+<li><a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/0508b75a745bb4f5cc4d64cfbb9206543d407ac7"><code>0508b75</code></a> fix: dont throw warning on variable data selector (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/272">#272</a>)</li>
+<li><a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/3fcfb93d8e950de8a8bd1c722e767946e01a0dcb"><code>3fcfb93</code></a> docs: migrate <a href="https://docs.cypress.io/guides">https://docs.cypress.io/guides</a> links (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/271">#271</a>)</li>
+<li><a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/22b6122daba733a2cb47d77c892b38b2844369e1"><code>22b6122</code></a> test: extend linting to customized test-project eslint config files (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/267">#267</a>)</li>
+<li><a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/b974e989af930ce97246ab2167a4a2f04d529af5"><code>b974e98</code></a> docs: harmonize markdown docs with prettier linting (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/266">#266</a>)</li>
+<li><a href="https://github.com/cypress-io/eslint-plugin-cypress/commit/8c9d1a0bae48e5b66eb9438e71383582695205f5"><code>8c9d1a0</code></a> ci: add prettier linting (<a href="https://redirect.github.com/cypress-io/eslint-plugin-cypress/issues/264">#264</a>)</li>
+<li>Additional commits viewable in <a href="https://github.com/cypress-io/eslint-plugin-cypress/compare/v4.3.0...v5.2.0">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `eslint-plugin-unused-imports` from 4.2.0 to 4.3.0
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/sweepline/eslint-plugin-unused-imports/commit/6e02be791dbbe3c65476aa354dedb7ebfa94d7a8"><code>6e02be7</code></a> chore: release v4.3.0</li>
+<li><a href="https://github.com/sweepline/eslint-plugin-unused-imports/commit/44a71812c1531a0f158c9f310036d5eba63a08ef"><code>44a7181</code></a> fix: preserve imports used in JSDoc <a href="https://github.com/link"><code>@​link</code></a> tags (<a href="https://redirect.github.com/sweepline/eslint-plugin-unused-imports/issues/111">#111</a>)</li>
+<li><a href="https://github.com/sweepline/eslint-plugin-unused-imports/commit/275d96e58a67aea38dd23c875e5f67634a4a5653"><code>275d96e</code></a> chore: update deps</li>
+<li>See full diff in <a href="https://github.com/sweepline/eslint-plugin-unused-imports/compare/v4.2.0...v4.3.0">compare view</a></li>
+</ul>
+</details>
+<br />
+
+Updates `stylelint` from 16.23.1 to 16.25.0
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/stylelint/stylelint/releases">stylelint's releases</a>.</em></p>
+<blockquote>
+<h2>16.25.0</h2>
+<p>It adds 3 new features, including experimental support for bulk suppressions. It's also our first <a href="https://github.blog/changelog/2025-08-26-releases-now-support-immutability-in-public-preview/">immutable release</a>, with the package published to npm using <a href="https://github.blog/changelog/2025-07-31-npm-trusted-publishing-with-oidc-is-generally-available/">trusted publishing</a> and our dependencies updated on a <a href="https://github.blog/changelog/2025-07-01-dependabot-supports-configuration-of-a-minimum-package-age/">cool down</a> for improved supply chain security.</p>
+<ul>
+<li>Added: support for bulk suppressions (<a href="https://redirect.github.com/stylelint/stylelint/issues/8564">#8564</a>) (<a href="https://github.com/ryo-manba"><code>@​ryo-manba</code></a>).</li>
+<li>Added: <code>ignoreAtRules: []</code> to <code>no-invalid-position-declaration</code> (<a href="https://redirect.github.com/stylelint/stylelint/issues/8781">#8781</a>) (<a href="https://github.com/jrmlt"><code>@​jrmlt</code></a>).</li>
+<li>Added: rule name to custom messages (<a href="https://redirect.github.com/stylelint/stylelint/issues/8774">#8774</a>) (<a href="https://github.com/jhae-de"><code>@​jhae-de</code></a>).</li>
+</ul>
+<h2>16.24.0</h2>
+<p>It adds 1 new rule, adds 1 option to a rule and fixes 2 bugs.</p>
+<ul>
+<li>Added: <code>rule-nesting-at-rule-required-list</code> rule (<a href="https://redirect.github.com/stylelint/stylelint/issues/8680">#8680</a>) (<a href="https://github.com/sw1tch3roo"><code>@​sw1tch3roo</code></a>).</li>
+<li>Added: <code>ignoreAtRules: []</code> to <code>nesting-selector-no-missing-scoping-root</code> (<a href="https://redirect.github.com/stylelint/stylelint/issues/8743">#8743</a>) (<a href="https://github.com/karlhorky"><code>@​karlhorky</code></a>).</li>
+<li>Fixed: <code>function-no-unknown</code> false positives for <code>contrast-color()</code> and <code>sibling-*()</code> (<a href="https://redirect.github.com/stylelint/stylelint/issues/8729">#8729</a>) (<a href="https://github.com/Mouvedia"><code>@​Mouvedia</code></a>).</li>
+<li>Fixed: <code>selector-pseudo-class-no-unknown</code> false positives for <code>:heading</code> (<a href="https://redirect.github.com/stylelint/stylelint/issues/8749">#8749</a>) (<a href="https://github.com/Mouvedia"><code>@​Mouvedia</code></a>).</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/stylelint/stylelint/blob/main/CHANGELOG.md">stylelint's changelog</a>.</em></p>
+<blockquote>
+<h2>16.25.0 - 2025-10-03</h2>
+<p>It adds 3 new features, including experimental support for bulk suppressions. It's also our first <a href="https://github.blog/changelog/2025-08-26-releases-now-support-immutability-in-public-preview/">immutable release</a>, with the package published to npm using <a href="https://github.blog/changelog/2025-07-31-npm-trusted-publishing-with-oidc-is-generally-available/">trusted publishing</a> and our dependencies updated on a <a href="https://github.blog/changelog/2025-07-01-dependabot-supports-configuration-of-a-minimum-package-age/">cool down</a> for improved supply chain security.</p>
+<ul>
+<li>Added: support for bulk suppressions (<a href="https://redirect.github.com/stylelint/stylelint/pull/8564">#8564</a>) (<a href="https://github.com/ryo-manba"><code>@​ryo-manba</code></a>).</li>
+<li>Added: <code>ignoreAtRules: []</code> to <code>no-invalid-position-declaration</code> (<a href="https://redirect.github.com/stylelint/stylelint/pull/8781">#8781</a>) (<a href="https://github.com/jrmlt"><code>@​jrmlt</code></a>).</li>
+<li>Added: rule name to custom messages (<a href="https://redirect.github.com/stylelint/stylelint/pull/8774">#8774</a>) (<a href="https://github.com/jhae-de"><code>@​jhae-de</code></a>).</li>
+</ul>
+<h2>16.24.0 - 2025-09-07</h2>
+<p>It adds 1 new rule, adds 1 option to a rule and fixes 2 bugs.</p>
+<ul>
+<li>Added: <code>rule-nesting-at-rule-required-list</code> rule (<a href="https://redirect.github.com/stylelint/stylelint/pull/8680">#8680</a>) (<a href="https://github.com/sw1tch3roo"><code>@​sw1tch3roo</code></a>).</li>
+<li>Added: <code>ignoreAtRules: []</code> to <code>nesting-selector-no-missing-scoping-root</code> (<a href="https://redirect.github.com/stylelint/stylelint/pull/8743">#8743</a>) (<a href="https://github.com/karlhorky"><code>@​karlhorky</code></a>).</li>
+<li>Fixed: <code>function-no-unknown</code> false positives for <code>contrast-color()</code> and <code>sibling-*()</code> (<a href="https://redirect.github.com/stylelint/stylelint/pull/8729">#8729</a>) (<a href="https://github.com/Mouvedia"><code>@​Mouvedia</code></a>).</li>
+<li>Fixed: <code>selector-pseudo-class-no-unknown</code> false positives for <code>:heading</code> (<a href="https://redirect.github.com/stylelint/stylelint/pull/8749">#8749</a>) (<a href="https://github.com/Mouvedia"><code>@​Mouvedia</code></a>).</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/stylelint/stylelint/commit/a6efacbd24c1d3cc94f9b4d4eb68696fcf4b0d85"><code>a6efacb</code></a> Release 16.25.0 (<a href="https://redirect.github.com/stylelint/stylelint/issues/8796">#8796</a>)</li>
+<li><a href="https://github.com/stylelint/stylelint/commit/9c623fb71bdc3dd70710fbd88933b6915e226ecb"><code>9c623fb</code></a> Document new release workflow (<a href="https://redirect.github.com/stylelint/stylelint/issues/8793">#8793</a>)</li>
+<li><a href="https://github.com/stylelint/stylelint/commit/f34b6b4d1e75753ea51378b2d111ec6bcb47c5fc"><code>f34b6b4</code></a> Fix <code>release-pr</code> workflow failure (<a href="https://redirect.github.com/stylelint/stylelint/issues/8794">#8794</a>)</li>
+<li><a href="https://github.com/stylelint/stylelint/commit/acc163e289609e91aefdc7bbf8582cdb4f81b6f1"><code>acc163e</code></a> Use consistent workflow names (<a href="https://redirect.github.com/stylelint/stylelint/issues/8792">#8792</a>)</li>
+<li><a href="https://github.com/stylelint/stylelint/commit/55de5ed49fa0e9c0387d60c4ea6d97dd58d269a8"><code>55de5ed</code></a> Use new release workflow (<a href="https://redirect.github.com/stylelint/stylelint/issues/8791">#8791</a>)</li>
+<li><a href="https://github.com/stylelint/stylelint/commit/242f757a3644ba144fd0f378ec71d34e1cf873c2"><code>242f757</code></a> Add rule name to custom messages (<a href="https://redirect.github.com/stylelint/stylelint/issues/8774">#8774</a>)</li>
+<li><a href="https://github.com/stylelint/stylelint/commit/9045b3e133c3cc2d567b6b9e3788422494a47c76"><code>9045b3e</code></a> Bump rollup from 4.50.1 to 4.52.0 (<a href="https://redirect.github.com/stylelint/stylelint/issues/8789">#8789</a>)</li>
+<li><a href="https://github.com/stylelint/stylelint/commit/30abc78e86871ad73f24296079cb0c8771c0f2d5"><code>30abc78</code></a> Bump eslint from 9.35.0 to 9.36.0 in the eslint group (<a href="https://redirect.github.com/stylelint/stylelint/issues/8786">#8786</a>)</li>
+<li><a href="https://github.com/stylelint/stylelint/commit/808cff35c8b7e7683d5798d9af8914acd170c56f"><code>808cff3</code></a> Bump stylelint/changelog-to-github-release-action from 0.3.1 to 0.5.1 (<a href="https://redirect.github.com/stylelint/stylelint/issues/8785">#8785</a>)</li>
+<li><a href="https://github.com/stylelint/stylelint/commit/b478202a2f061d5c2032c388878f361c367c143d"><code>b478202</code></a> Add <code>ignoreAtRules: []</code> to <code>no-invalid-position-declaration</code> (<a href="https://redirect.github.com/stylelint/stylelint/issues/8781">#8781</a>)</li>
+<li>Additional commits viewable in <a href="https://github.com/stylelint/stylelint/compare/16.23.1...16.25.0">compare view</a></li>
+</ul>
+</details>
+<details>
+<summary>Maintainer changes</summary>
+<p>This version was pushed to npm by [GitHub Actions](<a href="https://www.npmjs.com/~GitHub">https://www.npmjs.com/~GitHub</a> Actions), a new releaser for stylelint since your current version.</p>
+</details>
+<br />
+
+Updates `stylelint-config-recommended-scss` from 14.1.0 to 16.0.2
+<details>
+<summary>Release notes</summary>
+<p><em>Sourced from <a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/releases">stylelint-config-recommended-scss's releases</a>.</em></p>
+<blockquote>
+<h2>16.0.2</h2>
+<ul>
+<li>Removed: <code>stylelint</code> less than <code>16.24.0</code> from peer dependencies. Fixes incorrect minimum peer dependency version.</li>
+</ul>
+<h2>16.0.1</h2>
+<ul>
+<li>Fixed: false positive for <code>nesting-selector-no-missing-scoping-root</code>.</li>
+</ul>
+<h2>16.0.0</h2>
+<ul>
+<li>Changed: updated to <a href="https://github.com/stylelint/stylelint-config-recommended/releases/tag/17.0.0"><code>stylelint-config-recommended@17.0.0</code></a>.</li>
+<li>Changed: updated to <a href="https://github.com/stylelint-scss/stylelint-scss/releases/tag/v6.12.1"><code>stylelint-scss@6.12.1</code></a>.</li>
+<li>Removed: <code>stylelint</code> less than <code>16.23.1</code> from peer dependencies.</li>
+</ul>
+<h2>15.0.1</h2>
+<ul>
+<li>Fixed: change minimum supported Node.js version to <code>20</code>.</li>
+</ul>
+<h2>15.0.0</h2>
+<ul>
+<li>Changed: updated to <a href="https://github.com/stylelint/stylelint-config-recommended/releases/tag/16.0.0"><code>stylelint-config-recommended@16.0.0</code></a>.</li>
+<li>Changed: updated to <a href="https://github.com/stylelint-scss/stylelint-scss/releases/tag/v6.12.0"><code>stylelint-scss@6.12.0</code></a>.</li>
+<li>Removed: <code>stylelint</code> less than <code>16.16.0</code> from peer dependencies.</li>
+<li>Removed: Node.js less than <code>22</code> support.</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Changelog</summary>
+<p><em>Sourced from <a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/blob/master/CHANGELOG.md">stylelint-config-recommended-scss's changelog</a>.</em></p>
+<blockquote>
+<h1>16.0.2</h1>
+<ul>
+<li>Removed: <code>stylelint</code> less than <code>16.24.0</code> from peer dependencies. Fixes incorrect minimum peer dependency version.</li>
+</ul>
+<h1>16.0.1</h1>
+<ul>
+<li>Fixed: false positive for <code>nesting-selector-no-missing-scoping-root</code>.</li>
+</ul>
+<h1>16.0.0</h1>
+<ul>
+<li>Changed: updated to <a href="https://github.com/stylelint/stylelint-config-recommended/releases/tag/17.0.0"><code>stylelint-config-recommended@17.0.0</code></a>.</li>
+<li>Changed: updated to <a href="https://github.com/stylelint-scss/stylelint-scss/releases/tag/v6.12.1"><code>stylelint-scss@6.12.1</code></a>.</li>
+<li>Removed: <code>stylelint</code> less than <code>16.23.1</code> from peer dependencies.</li>
+</ul>
+<h1>15.0.1</h1>
+<ul>
+<li>Fixed: change minimum supported Node.js version to <code>20</code>.</li>
+</ul>
+<h1>15.0.0</h1>
+<ul>
+<li>Changed: updated to <a href="https://github.com/stylelint/stylelint-config-recommended/releases/tag/16.0.0"><code>stylelint-config-recommended@16.0.0</code></a>.</li>
+<li>Changed: updated to <a href="https://github.com/stylelint-scss/stylelint-scss/releases/tag/v6.12.0"><code>stylelint-scss@6.12.0</code></a>.</li>
+<li>Removed: <code>stylelint</code> less than <code>16.16.0</code> from peer dependencies.</li>
+<li>Removed: Node.js less than <code>22</code> support.</li>
+</ul>
+</blockquote>
+</details>
+<details>
+<summary>Commits</summary>
+<ul>
+<li><a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/commit/7f3fe7130faed10a0aa57428520b5d2c0963d273"><code>7f3fe71</code></a> 16.0.2</li>
+<li><a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/commit/2b8ff0c3b4285038b0ba3f63a666dd3611230acf"><code>2b8ff0c</code></a> Prepare 16.0.2</li>
+<li><a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/commit/2e8b4b64b7f54ed72b2a9a12635466657153864e"><code>2e8b4b6</code></a> Bump eslint from 9.35.0 to 9.36.0 (<a href="https://redirect.github.com/stylelint-scss/stylelint-config-recommended-scss/issues/371">#371</a>)</li>
+<li><a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/commit/94d6fd331be808dbe5de70e70e5b13c2ed39703a"><code>94d6fd3</code></a> Bump stylelint peer dep to 16.24.0 (<a href="https://redirect.github.com/stylelint-scss/stylelint-config-recommended-scss/issues/370">#370</a>)</li>
+<li><a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/commit/a9edfb274b12b75e1319388bea3ca73e6df56907"><code>a9edfb2</code></a> 16.0.1</li>
+<li><a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/commit/02dc994e6ddc8f69e2bf68578b031f58ee1f802b"><code>02dc994</code></a> Prepare 16.0.1</li>
+<li><a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/commit/82329b174b110bc02ce0cc0fa24dcd5ce9e6ed69"><code>82329b1</code></a> Revert stylelint peer dep version bump (<a href="https://redirect.github.com/stylelint-scss/stylelint-config-recommended-scss/issues/368">#368</a>)</li>
+<li><a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/commit/02e99ca3a19a1bf81747b6bdd525273f54a04e74"><code>02e99ca</code></a> Bump eslint from 9.32.0 to 9.35.0 (<a href="https://redirect.github.com/stylelint-scss/stylelint-config-recommended-scss/issues/367">#367</a>)</li>
+<li><a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/commit/0c168c85de633d2a84197bf0128ed99a477caa8e"><code>0c168c8</code></a> Bump actions/checkout from 4 to 5 (<a href="https://redirect.github.com/stylelint-scss/stylelint-config-recommended-scss/issues/363">#363</a>)</li>
+<li><a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/commit/c554a0e637101ed37403499b84b0a0cce3ee7e8c"><code>c554a0e</code></a> Fix false positive for nesting-selector-no-missing-scoping-root (<a href="https://redirect.github.com/stylelint-scss/stylelint-config-recommended-scss/issues/365">#365</a>)</li>
+<li>Additional commits viewable in <a href="https://github.com/stylelint-scss/stylelint-config-recommended-scss/compare/v14.1.0...v16.0.2">compare view</a></li>
+</ul>
+</details>
+<br />
+
+
+Dependabot will resolve any conflicts with this PR as long as you don't alter it yourself. You can also trigger a rebase manually by commenting `@dependabot rebase`.
+
+[//]: # (dependabot-automerge-start)
+[//]: # (dependabot-automerge-end)
+
+---
+
+<details>
+<summary>Dependabot commands and options</summary>
+<br />
+
+You can trigger Dependabot actions by commenting on this PR:
+- `@dependabot rebase` will rebase this PR
+- `@dependabot recreate` will recreate this PR, overwriting any edits that have been made to it
+- `@dependabot merge` will merge this PR after your CI passes on it
+- `@dependabot squash and merge` will squash and merge this PR after your CI passes on it
+- `@dependabot cancel merge` will cancel a previously requested merge and block automerging
+- `@dependabot reopen` will reopen this PR if it is closed
+- `@dependabot close` will close this PR and stop Dependabot recreating it. You can achieve the same result by closing it manually
+- `@dependabot show <dependency name> ignore conditions` will show all of the ignore conditions of the specified dependency
+- `@dependabot ignore <dependency name> major version` will close this group update PR and stop Dependabot creating any more for the specific dependency's major version (unless you unignore this specific dependency's major version or upgrade to it yourself)
+- `@dependabot ignore <dependency name> minor version` will close this group update PR and stop Dependabot creating any more for the specific dependency's minor version (unless you unignore this specific dependency's minor version or upgrade to it yourself)
+- `@dependabot ignore <dependency name>` will close this group update PR and stop Dependabot creating any more for the specific dependency (unless you unignore this specific dependency or upgrade to it yourself)
+- `@dependabot unignore <dependency name>` will remove all of the ignore conditions of the specified dependency
+- `@dependabot unignore <dependency name> <ignore condition>` will remove the ignore condition of the specified dependency and ignore conditions
+
+
+</details>
+
+---
+
+## Discussion
+
+### Comment by @dependabot on December 08, 2025 at 08:36 AM UTC
+
+Looks like these dependencies are updatable in another way, so this is no longer needed.
+
+---
+
+*Archived from: https://github.com/RedHatInsights/patchman-ui/pull/1435*

@@ -1,0 +1,14 @@
+{
+  "repository": "content-services/yummy",
+  "fetched_at": "2026-06-28T17:58:15.285637Z",
+  "stats": {
+    "total_issues": 1,
+    "open_issues": 0,
+    "closed_issues": 1,
+    "total_prs": 42,
+    "open_prs": 0,
+    "merged_prs": 40,
+    "closed_prs": 2,
+    "api_calls_made": 2
+  }
+}
