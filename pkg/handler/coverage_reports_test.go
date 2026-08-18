@@ -10,16 +10,20 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+	"time"
 
 	"github.com/content-services/content-sources-backend/pkg/api"
 	"github.com/content-services/content-sources-backend/pkg/config"
+	"github.com/content-services/content-sources-backend/pkg/dao"
 	"github.com/content-services/content-sources-backend/pkg/middleware"
 	"github.com/content-services/content-sources-backend/pkg/seeds"
 	test_handler "github.com/content-services/content-sources-backend/pkg/test/handler"
+	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
 	echo_middleware "github.com/labstack/echo/v4/middleware"
 	"github.com/redhatinsights/platform-go-middlewares/v2/identity"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 )
@@ -27,6 +31,7 @@ import (
 type CoverageReportSuite struct {
 	suite.Suite
 	echo *echo.Echo
+	reg  *dao.MockDaoRegistry
 }
 
 func TestCoverageReportSuite(t *testing.T) {
@@ -39,6 +44,7 @@ func (suite *CoverageReportSuite) SetupTest() {
 		TargetHeader: "x-rh-insights-request-id",
 	}))
 	suite.echo.Use(middleware.WrapMiddlewareWithSkipper(identity.EnforceIdentity, middleware.SkipMiddleware))
+	suite.reg = dao.GetMockDaoRegistry(suite.T())
 }
 
 func (suite *CoverageReportSuite) TearDownTest() {
@@ -63,7 +69,7 @@ func (suite *CoverageReportSuite) serveCoverageReportRouter(req *http.Request, e
 		config.Get().Features.LightwellBeaconAndLens.Accounts = &[]string{seeds.RandomAccountId()}
 	}
 
-	RegisterCoverageReportRoutes(pathPrefix)
+	RegisterCoverageReportRoutes(pathPrefix, suite.reg.ToDaoRegistry())
 
 	rr := httptest.NewRecorder()
 	router.ServeHTTP(rr, req)
@@ -75,7 +81,7 @@ func (suite *CoverageReportSuite) serveCoverageReportRouter(req *http.Request, e
 	return response.StatusCode, body, err
 }
 
-func (suite *CoverageReportSuite) TestCreateCoverageReport_Stub() {
+func (suite *CoverageReportSuite) TestCreateCoverageReport() {
 	t := suite.T()
 	reqBody := &bytes.Buffer{}
 	writer := multipart.NewWriter(reqBody)
@@ -85,6 +91,14 @@ func (suite *CoverageReportSuite) TestCreateCoverageReport_Stub() {
 	require.NoError(t, err)
 	require.NoError(t, writer.Close())
 
+	expectedReport := api.CoverageReportResponse{
+		UUID:      uuid.NewString(),
+		Status:    config.TaskStatusPending,
+		CreatedAt: time.Now(),
+	}
+	suite.reg.CoverageReport.On("CreateCoverageReport", mock.Anything, mock.Anything, mock.Anything).
+		Return(expectedReport, nil)
+
 	req := httptest.NewRequest(http.MethodPost, fmt.Sprintf("%s/coverage_reports/", api.FullRootPath()), reqBody)
 	req.Header.Set("Content-Type", writer.FormDataContentType())
 	req.Header.Set(api.IdentityHeader, test_handler.EncodedIdentity(t))
@@ -93,11 +107,12 @@ func (suite *CoverageReportSuite) TestCreateCoverageReport_Stub() {
 	assert.Nil(suite.T(), err)
 
 	var response api.CoverageReportResponse
-	err = json.Unmarshal(body, &response)
-	assert.Nil(suite.T(), err)
+	require.NoError(t, json.Unmarshal(body, &response))
 
 	assert.Equal(t, http.StatusCreated, code)
-	assert.Equal(t, response.Status, "pending")
+	assert.Equal(t, config.TaskStatusPending, response.Status)
+	assert.Equal(t, expectedReport.UUID, response.UUID)
+	assert.False(t, response.CreatedAt.IsZero())
 }
 
 func (suite *CoverageReportSuite) TestCreateCoverageReportNotAccessible() {
@@ -297,7 +312,7 @@ func (suite *CoverageReportSuite) TestListCoverageReportPackagesPendingReport_St
 	assert.Equal(t, http.StatusNotFound, code)
 }
 
-func (suite *CoverageReportSuite) TestCreateCoverageReportMissingFile_Stub() {
+func (suite *CoverageReportSuite) TestCreateCoverageReportMissingFile() {
 	t := suite.T()
 	req, err := http.NewRequest(http.MethodPost, fmt.Sprintf("%s/coverage_reports/", api.FullRootPath()), nil)
 	require.NoError(t, err)
@@ -308,7 +323,7 @@ func (suite *CoverageReportSuite) TestCreateCoverageReportMissingFile_Stub() {
 	assert.Equal(t, http.StatusBadRequest, code)
 }
 
-func (suite *CoverageReportSuite) TestCreateCoverageReportEmptyBody_Stub() {
+func (suite *CoverageReportSuite) TestCreateCoverageReportEmptyBody() {
 	t := suite.T()
 	req, err := http.NewRequest(http.MethodPost, fmt.Sprintf("%s/coverage_reports/", api.FullRootPath()), io.NopCloser(bytes.NewReader(nil)))
 	require.NoError(t, err)

@@ -5,10 +5,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"time"
 
 	"github.com/content-services/content-sources-backend/pkg/api"
-	"github.com/google/uuid"
 )
 
 const (
@@ -22,17 +20,6 @@ var errStubCoverageReportNotFound = errors.New("coverage report not found")
 
 //go:embed test_files/coverage_reports/*.json
 var coverageReportStubFS embed.FS
-
-func stubCreateCoverageReport() (api.CoverageReportResponse, error) {
-	report, err := stubPendingReport()
-	if err != nil {
-		return api.CoverageReportResponse{}, err
-	}
-
-	report.UUID = uuid.New().String()
-	report.CreatedAt = time.Now().UTC().Truncate(time.Second)
-	return report, nil
-}
 
 func stubGetCoverageReport(reportUUID string) (api.CoverageReportResponse, error) {
 	switch reportUUID {

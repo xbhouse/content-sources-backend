@@ -26,6 +26,7 @@ packages:
   github.com/content-services/content-sources-backend/pkg/dao:
     interfaces:
       AdminTaskDao: {}
+      CoverageReportDao: {}
       DomainDao: {}
       EnvironmentDao: {}
       MemoDao: {}

@@ -1,16 +1,34 @@
 package handler
 
 import (
+	"bytes"
+	"context"
+	"crypto/sha256"
+	"encoding/hex"
 	"errors"
+	"fmt"
+	"io"
 	"net/http"
 
+	awsConfig "github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/credentials"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
 	"github.com/content-services/content-sources-backend/pkg/api"
+	"github.com/content-services/content-sources-backend/pkg/config"
+	"github.com/content-services/content-sources-backend/pkg/dao"
 	ce "github.com/content-services/content-sources-backend/pkg/errors"
 	"github.com/content-services/content-sources-backend/pkg/rbac"
+	"github.com/content-services/content-sources-backend/pkg/utils"
+	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
+	"github.com/rs/zerolog/log"
 )
 
-type CoverageReportHandler struct{}
+const maxCoverageUploadSizeBytes = 50 * 1024 * 1024 // 50 MiB
+
+type CoverageReportHandler struct {
+	DaoRegistry dao.DaoRegistry
+}
 
 func checkLightwellBeaconAndLensAccessible(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
@@ -21,8 +39,10 @@ func checkLightwellBeaconAndLensAccessible(next echo.HandlerFunc) echo.HandlerFu
 	}
 }
 
-func RegisterCoverageReportRoutes(engine *echo.Group) {
-	ch := CoverageReportHandler{}
+func RegisterCoverageReportRoutes(engine *echo.Group, daoReg *dao.DaoRegistry) {
+	ch := CoverageReportHandler{
+		DaoRegistry: *daoReg,
+	}
 	addRepoRoute(engine, http.MethodPost, "/coverage_reports/", ch.createCoverageReport, rbac.RbacVerbWrite, checkLightwellBeaconAndLensAccessible)
 	addRepoRoute(engine, http.MethodGet, "/coverage_reports/:uuid", ch.getCoverageReport, rbac.RbacVerbRead, checkLightwellBeaconAndLensAccessible)
 	addRepoRoute(engine, http.MethodGet, "/coverage_reports/:uuid/packages", ch.listCoverageReportPackages, rbac.RbacVerbRead, checkLightwellBeaconAndLensAccessible)
@@ -42,16 +62,86 @@ func RegisterCoverageReportRoutes(engine *echo.Group) {
 // @Failure      500 {object} ce.ErrorResponse
 // @Router       /coverage_reports/ [post]
 func (ch *CoverageReportHandler) createCoverageReport(c echo.Context) error {
-	if _, err := c.FormFile("file"); err != nil {
-		return ce.NewErrorResponse(http.StatusBadRequest, "Error binding parameters", "file is required")
+	accountID, orgID := getAccountIdOrgId(c)
+
+	fileHeader, err := c.FormFile("file")
+	if err != nil {
+		return ce.NewErrorResponse(http.StatusBadRequest, "Error binding parameters", "File is required")
+	}
+	if fileHeader.Size <= 0 {
+		return ce.NewErrorResponse(http.StatusBadRequest, "Error reading upload", "Size must be greater than 0")
+	}
+	if fileHeader.Size > maxCoverageUploadSizeBytes {
+		return ce.NewErrorResponse(http.StatusRequestEntityTooLarge, "Error reading upload", "File exceeds maximum upload size")
 	}
 
-	report, err := stubCreateCoverageReport()
+	file, err := fileHeader.Open()
 	if err != nil {
-		return ce.NewErrorResponse(http.StatusInternalServerError, "Error loading fixture", err.Error())
+		return ce.NewErrorResponse(http.StatusBadRequest, "Error opening upload", err.Error())
 	}
+	defer file.Close()
+
+	uploadUUID := uuid.NewString()
+	storageKey := "coverage-uploads/" + uploadUUID
+
+	hash := sha256.New()
+	fileBytes, err := io.ReadAll(io.TeeReader(file, hash))
+	if err != nil {
+		return ce.NewErrorResponse(http.StatusBadRequest, "Error reading upload", err.Error())
+	}
+
+	if err := uploadCoverageManifestToS3(c.Request().Context(), storageKey, fileBytes); err != nil {
+		return ce.NewErrorResponse(http.StatusInternalServerError, "Error uploading coverage report", err.Error())
+	}
+
+	sha256Hex := hex.EncodeToString(hash.Sum(nil))
+	sizeBytes := int64(len(fileBytes))
+
+	reportParams := dao.CreateCoverageReportParams{OrgID: orgID}
+	if accountID != "" {
+		reportParams.AccountID = utils.Ptr(accountID)
+	}
+	uploadParams := dao.CreateCoverageUploadParams{
+		UUID:       uploadUUID,
+		StorageKey: storageKey,
+		Sha256:     sha256Hex,
+		SizeBytes:  sizeBytes,
+	}
+
+	report, err := ch.DaoRegistry.CoverageReport.CreateCoverageReport(c.Request().Context(), reportParams, uploadParams)
+	if err != nil {
+		return ce.NewErrorResponse(ce.HttpCodeForDaoError(err), "Error creating coverage report", err.Error())
+	}
+
+	// TODO: enqueue task, set task UUID
 
 	return c.JSON(http.StatusCreated, report)
+}
+
+func uploadCoverageManifestToS3(ctx context.Context, storageKey string, fileBytes []byte) error {
+	cfg := config.Get().Clients.Lightwell.CoverageUploads
+	if cfg.Name == "" {
+		log.Warn().Msg("Not configured to upload to S3")
+		return nil
+	}
+
+	awsCfg, err := awsConfig.LoadDefaultConfig(context.Background(), awsConfig.WithRegion(cfg.Region),
+		awsConfig.WithCredentialsProvider(credentials.NewStaticCredentialsProvider(cfg.AccessKey, cfg.SecretKey, "")))
+	if err != nil {
+		return fmt.Errorf("unable to load SDK config: %w", err)
+	}
+	s3Client := s3.NewFromConfig(awsCfg)
+
+	_, err = s3Client.PutObject(ctx, &s3.PutObjectInput{
+		Bucket: &cfg.Name,
+		Key:    &storageKey,
+		Body:   bytes.NewReader(fileBytes),
+	})
+	if err != nil {
+		return fmt.Errorf("failed to upload report to S3: %w", err)
+	}
+	log.Info().Msgf("Uploaded %s to s3", storageKey)
+	return nil
 }
 
 // GetCoverageReport godoc
