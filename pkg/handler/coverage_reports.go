@@ -7,9 +7,14 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
+	"github.com/content-services/content-sources-backend/pkg/tasks"
+	"github.com/content-services/content-sources-backend/pkg/tasks/client"
+	"github.com/content-services/content-sources-backend/pkg/tasks/payloads"
+	"github.com/content-services/content-sources-backend/pkg/tasks/queue"
 	"io"
 	"net/http"
 
+	"github.com/aws/aws-sdk-go-v2/aws"
 	awsConfig "github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/credentials"
 	"github.com/aws/aws-sdk-go-v2/service/s3"
@@ -28,6 +33,7 @@ const maxCoverageUploadSizeBytes = 50 * 1024 * 1024 // 50 MiB
 
 type CoverageReportHandler struct {
 	DaoRegistry dao.DaoRegistry
+	TaskClient  client.TaskClient
 }
 
 func checkLightwellBeaconAndLensAccessible(next echo.HandlerFunc) echo.HandlerFunc {
@@ -39,9 +45,10 @@ func checkLightwellBeaconAndLensAccessible(next echo.HandlerFunc) echo.HandlerFu
 	}
 }
 
-func RegisterCoverageReportRoutes(engine *echo.Group, daoReg *dao.DaoRegistry) {
+func RegisterCoverageReportRoutes(engine *echo.Group, daoReg *dao.DaoRegistry, taskClient *client.TaskClient) {
 	ch := CoverageReportHandler{
 		DaoRegistry: *daoReg,
+		TaskClient:  *taskClient,
 	}
 	addRepoRoute(engine, http.MethodPost, "/coverage_reports/", ch.createCoverageReport, rbac.RbacVerbWrite, checkLightwellBeaconAndLensAccessible)
 	addRepoRoute(engine, http.MethodGet, "/coverage_reports/:uuid", ch.getCoverageReport, rbac.RbacVerbRead, checkLightwellBeaconAndLensAccessible)
@@ -108,12 +115,12 @@ func (ch *CoverageReportHandler) createCoverageReport(c echo.Context) error {
 		SizeBytes:  sizeBytes,
 	}
 
-	report, err := ch.DaoRegistry.CoverageReport.CreateCoverageReport(c.Request().Context(), reportParams, uploadParams)
+	report, err := ch.DaoRegistry.CoverageReport.Create(c.Request().Context(), reportParams, uploadParams)
 	if err != nil {
 		return ce.NewErrorResponse(ce.HttpCodeForDaoError(err), "Error creating coverage report", err.Error())
 	}
 
-	// TODO: enqueue task, set task UUID
+	ch.enqueueCoverageAnalysisEvent(c, report, uploadUUID)
 
 	return c.JSON(http.StatusCreated, report)
 }
@@ -130,7 +137,12 @@ func uploadCoverageManifestToS3(ctx context.Context, storageKey string, fileByte
 	if err != nil {
 		return fmt.Errorf("unable to load SDK config: %w", err)
 	}
-	s3Client := s3.NewFromConfig(awsCfg)
+	s3Client := s3.NewFromConfig(awsCfg, func(o *s3.Options) {
+		o.UsePathStyle = true
+		if cfg.URL != "" {
+			o.BaseEndpoint = aws.String(cfg.URL)
+		}
+	})
 
 	_, err = s3Client.PutObject(ctx, &s3.PutObjectInput{
 		Bucket: &cfg.Name,
@@ -156,12 +168,11 @@ func uploadCoverageManifestToS3(ctx context.Context, storageKey string, fileByte
 // @Failure      500 {object} ce.ErrorResponse
 // @Router       /coverage_reports/{uuid} [get]
 func (ch *CoverageReportHandler) getCoverageReport(c echo.Context) error {
-	report, err := stubGetCoverageReport(c.Param("uuid"))
-	if errors.Is(err, errStubCoverageReportNotFound) {
-		return ce.NewErrorResponse(http.StatusNotFound, "Coverage report not found", "Report is not available or analysis is incomplete")
-	}
+	_, orgID := getAccountIdOrgId(c)
+
+	report, err := ch.DaoRegistry.CoverageReport.Fetch(c.Request().Context(), orgID, c.Param("uuid"))
 	if err != nil {
-		return ce.NewErrorResponse(http.StatusInternalServerError, "Error loading fixture", err.Error())
+		return ce.NewErrorResponse(ce.HttpCodeForDaoError(err), "Error fetching coverage report", err.Error())
 	}
 
 	return c.JSON(http.StatusOK, report)
@@ -199,4 +210,30 @@ func (ch *CoverageReportHandler) listCoverageReportPackages(c echo.Context) erro
 	}
 
 	return c.JSON(http.StatusOK, response)
+}
+
+func (ch *CoverageReportHandler) enqueueCoverageAnalysisEvent(c echo.Context, report api.CoverageReportResponse, uploadUUID string) uuid.UUID {
+	accountID, orgID := getAccountIdOrgId(c)
+	payload := payloads.CoverageAnalysisPayload{CoverageReportUUID: report.UUID, CoverageUploadUUID: uploadUUID}
+	task := queue.Task{
+		Typename:  config.CoverageAnalysisTask,
+		Payload:   payload,
+		OrgId:     orgID,
+		AccountId: accountID,
+		RequestID: c.Response().Header().Get(config.HeaderRequestId),
+	}
+	taskID, err := ch.TaskClient.Enqueue(task)
+	logger := tasks.LogForTask(taskID.String(), task.Typename, task.RequestID)
+	if err != nil {
+		logger.Error().Msg("error enqueuing task")
+	}
+	if err == nil {
+		if err = ch.DaoRegistry.CoverageReport.SetAnalysisTaskUUID(c.Request().Context(), report.UUID, taskID.String()); err != nil {
+			logger.Error().Msg("error updating analysis task UUID")
+		} else {
+			report.AnalysisTaskUUID = taskID.String()
+		}
+	}
+
+	return taskID
 }

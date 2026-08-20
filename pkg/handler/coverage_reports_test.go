@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/content-services/content-sources-backend/pkg/tasks/client"
 	"io"
 	"mime/multipart"
 	"net/http"
@@ -30,8 +31,9 @@ import (
 
 type CoverageReportSuite struct {
 	suite.Suite
-	echo *echo.Echo
-	reg  *dao.MockDaoRegistry
+	echo   *echo.Echo
+	reg    *dao.MockDaoRegistry
+	tcMock *client.MockTaskClient
 }
 
 func TestCoverageReportSuite(t *testing.T) {
@@ -45,6 +47,7 @@ func (suite *CoverageReportSuite) SetupTest() {
 	}))
 	suite.echo.Use(middleware.WrapMiddlewareWithSkipper(identity.EnforceIdentity, middleware.SkipMiddleware))
 	suite.reg = dao.GetMockDaoRegistry(suite.T())
+	suite.tcMock = client.NewMockTaskClient(suite.T())
 }
 
 func (suite *CoverageReportSuite) TearDownTest() {
@@ -69,7 +72,12 @@ func (suite *CoverageReportSuite) serveCoverageReportRouter(req *http.Request, e
 		config.Get().Features.LightwellBeaconAndLens.Accounts = &[]string{seeds.RandomAccountId()}
 	}
 
-	RegisterCoverageReportRoutes(pathPrefix, suite.reg.ToDaoRegistry())
+	ch := CoverageReportHandler{
+		DaoRegistry: *suite.reg.ToDaoRegistry(),
+		TaskClient:  suite.tcMock,
+	}
+
+	RegisterCoverageReportRoutes(pathPrefix, suite.reg.ToDaoRegistry(), &ch.TaskClient)
 
 	rr := httptest.NewRecorder()
 	router.ServeHTTP(rr, req)

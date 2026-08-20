@@ -291,5 +291,9 @@ type UserPreferenceDao interface {
 }
 
 type CoverageReportDao interface {
-	CreateCoverageReport(ctx context.Context, report CreateCoverageReportParams, upload CreateCoverageUploadParams) (api.CoverageReportResponse, error)
+	Create(ctx context.Context, report CreateCoverageReportParams, upload CreateCoverageUploadParams) (api.CoverageReportResponse, error)
+	Fetch(ctx context.Context, orgID string, reportUUID string) (api.CoverageReportResponse, error)
+	InternalOnlyFetchCoverageUpload(ctx context.Context, uploadUUID string) (models.CoverageUpload, error)
+	SetAnalysisTaskUUID(ctx context.Context, reportUUID string, taskUUID string) error
+	UpdateCoverageReportStatus(ctx context.Context, reportUUID string, status string, errMsg *string) error
 }
