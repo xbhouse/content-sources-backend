@@ -16,18 +16,21 @@
 # GET does not create MavenPackage units that the packages API lists).
 #
 # Usage:
-#   ./scripts/create_lightwell_repo.sh [--remote-url URL] [--validated-count N]
+#   ./scripts/create_lightwell_repo.sh [--remote-url URL] [--validated-count N] [--with-advisories]
 #
 #   --validated-count N  Number of distinct packages to seed into the validated
 #                        Maven repo (default 20). Also settable via the
 #                        VALIDATED_PACKAGE_COUNT environment variable. Packages
 #                        are synthetic POMs uploaded via repository modify so
 #                        they appear in the packages API.
-#
-# Auth:
-#   Basic auth (default): set PULP_USER and PULP_PASS
-#   Cert auth: set PULP_CLIENT_CERT and PULP_CLIENT_KEY (and optionally PULP_CA_CERT)
-#              Leave PULP_USER unset or empty to use cert auth.
+#   --with-advisories    Insert dummy advisories on lightwell/java/remediated
+#                        packages (off by default). Severity sets for Network/Lens:
+#                          marker          — none
+#                          avalon-util     — important only
+#                          blissed         — critical + important + moderate
+#                          org.example:demo-lib — all four levels
+# Re-run this script to pick up new rows; Pulp Maven seed is skipped when
+# the catalog is already populated.
 
 set -euo pipefail
 
@@ -57,6 +60,14 @@ LIGHTWELL_DEMO_JSON="${REPO_DIR}/pkg/external_repos/lightwell_demo_repos.json"
 VALIDATED_BASE_PATH="${VALIDATED_BASE_PATH:-java/validated}"
 VALIDATED_PACKAGE_COUNT="${VALIDATED_PACKAGE_COUNT:-20}"
 
+DATABASE_HOST="${DATABASE_HOST:-localhost}"
+DATABASE_EXTERNAL_PORT="${DATABASE_EXTERNAL_PORT:-5433}"
+DATABASE_NAME="${DATABASE_NAME:-content}"
+DATABASE_USER="${DATABASE_USER:-content}"
+DATABASE_PASSWORD="${DATABASE_PASSWORD:-content}"
+DUMMY_ADVISORY_REPO_NAME="${DUMMY_ADVISORY_REPO_NAME:-lightwell/java/remediated}"
+INSERT_ADVISORIES=false
+
 # If no user is set, default to basic auth with admin/password for backwards compat
 if [[ -z "$PULP_USER" && -z "$PULP_CLIENT_CERT" ]]; then
   PULP_USER="admin"
@@ -71,6 +82,7 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --remote-url)      REMOTE_URL="$2"; shift 2 ;;
     --validated-count) VALIDATED_PACKAGE_COUNT="$2"; shift 2 ;;
+    --with-advisories) INSERT_ADVISORIES=true; shift ;;
     *)                 echo "Unknown option: $1" >&2; exit 1 ;;
   esac
 done
@@ -400,6 +412,18 @@ seed_maven_packages() {
   content_hrefs+=("$RESULT")
 
   upload_maven_pom "$domain_name" \
+    "csseed/${marker_slug}/marker/1.0.0.rhlw-00001/marker-1.0.0.rhlw-00001.pom" \
+    "<?xml version=\"1.0\"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>csseed.${marker_slug}</groupId>
+  <artifactId>marker</artifactId>
+  <version>1.0.0.rhlw-00001</version>
+</project>
+"
+  content_hrefs+=("$RESULT")
+
+  upload_maven_pom "$domain_name" \
     "blissed/blissed/1.0-beta-3/blissed-1.0-beta-3.pom" \
     '<?xml version="1.0"?>
 <project>
@@ -412,6 +436,18 @@ seed_maven_packages() {
   content_hrefs+=("$RESULT")
 
   upload_maven_pom "$domain_name" \
+    "blissed/blissed/1.0-beta-3.rhlw-00001/blissed-1.0-beta-3.rhlw-00001.pom" \
+    '<?xml version="1.0"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>blissed</groupId>
+  <artifactId>blissed</artifactId>
+  <version>1.0-beta-3.rhlw-00001</version>
+</project>
+'
+  content_hrefs+=("$RESULT")
+
+  upload_maven_pom "$domain_name" \
     "avalon-util/avalon-util-exception/1.0.0/avalon-util-exception-1.0.0.pom" \
     '<?xml version="1.0"?>
 <project>
@@ -419,6 +455,42 @@ seed_maven_packages() {
   <groupId>avalon-util</groupId>
   <artifactId>avalon-util-exception</artifactId>
   <version>1.0.0</version>
+</project>
+'
+  content_hrefs+=("$RESULT")
+
+  upload_maven_pom "$domain_name" \
+    "avalon-util/avalon-util-exception/1.0.0.rhlw-00001/avalon-util-exception-1.0.0.rhlw-00001.pom" \
+    '<?xml version="1.0"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>avalon-util</groupId>
+  <artifactId>avalon-util-exception</artifactId>
+  <version>1.0.0.rhlw-00001</version>
+</project>
+'
+  content_hrefs+=("$RESULT")
+
+  upload_maven_pom "$domain_name" \
+    "org/example/demo-lib/5.3.18/demo-lib-5.3.18.pom" \
+    '<?xml version="1.0"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.example</groupId>
+  <artifactId>demo-lib</artifactId>
+  <version>5.3.18</version>
+</project>
+'
+  content_hrefs+=("$RESULT")
+
+  upload_maven_pom "$domain_name" \
+    "org/example/demo-lib/5.4.0/demo-lib-5.4.0.pom" \
+    '<?xml version="1.0"?>
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.example</groupId>
+  <artifactId>demo-lib</artifactId>
+  <version>5.4.0</version>
 </project>
 '
   content_hrefs+=("$RESULT")
@@ -653,6 +725,144 @@ create_repos_from_json() {
   done
 }
 
+# Inserts dummy advisories across seeded packages on lightwell/java/remediated.
+# Idempotent. Requires psql.
+insert_dummy_advisories() {
+  if ! command -v psql >/dev/null 2>&1; then
+    echo "ERROR: psql is required to insert the dummy advisory." >&2
+    exit 1
+  fi
+
+  echo ""
+  echo "==> Inserting dummy advisories on ${DUMMY_ADVISORY_REPO_NAME}..."
+
+  PGPASSWORD="$DATABASE_PASSWORD" psql \
+    "sslmode=disable dbname=${DATABASE_NAME} user=${DATABASE_USER} host=${DATABASE_HOST} port=${DATABASE_EXTERNAL_PORT}" \
+    -v ON_ERROR_STOP=1 \
+    -v repo_name="$DUMMY_ADVISORY_REPO_NAME" \
+    <<'SQL'
+INSERT INTO lightwell_advisories (
+    uuid,
+    repo_name,
+    advisory_id,
+    severity,
+    severity_score,
+    details,
+    reference_urls,
+    package_name,
+    package_version,
+    fixed_versions,
+    repository_configuration_uuid,
+    checksum,
+    published,
+    modified,
+    aliases,
+    schema_version,
+    source,
+    summary
+)
+SELECT
+    d.uuid,
+    rc.name,
+    d.advisory_id,
+    d.severity,
+    d.severity_score,
+    'Local dummy advisory for ' || d.package_name || ' on ' || rc.name || '.',
+    ARRAY['https://lightwell.example.com/advisories/' || d.advisory_id],
+    d.package_name,
+    d.package_version,
+    d.fixed_versions,
+    rc.uuid,
+    d.checksum,
+    NOW(),
+    NOW(),
+    ARRAY[d.advisory_id],
+    '1.6.8',
+    'local-dummy',
+    'Dummy Lightwell advisory (' || d.severity || ') for local Network/Lens testing.'
+FROM (
+    SELECT uuid, name
+    FROM repository_configurations
+    WHERE name = :'repo_name'
+      AND deleted_at IS NULL
+    LIMIT 1
+) rc
+CROSS JOIN (VALUES
+    -- org.example:demo-lib — all four levels
+    ('00000000-0000-4000-8000-00000000ad01'::uuid, 'CVE-2026-00000', 'critical',  9.8::real, 'org.example:demo-lib',              '5.3.18',     ARRAY['5.3.18.rhlw-00001', '5.3.18.rhlw-00003']::text[], 'local-dummy-demo-lib-critical'),
+    ('00000000-0000-4000-8000-00000000ad02'::uuid, 'CVE-2026-00001', 'important', 7.5::real, 'org.example:demo-lib',              '5.3.18',     ARRAY['5.3.18.rhlw-00001', '5.3.18.rhlw-00003']::text[], 'local-dummy-demo-lib-important'),
+    ('00000000-0000-4000-8000-00000000ad03'::uuid, 'CVE-2026-00002', 'moderate',  5.0::real, 'org.example:demo-lib',              '5.3.18',     ARRAY['5.3.18.rhlw-00001', '5.3.18.rhlw-00003']::text[], 'local-dummy-demo-lib-moderate'),
+    ('00000000-0000-4000-8000-00000000ad04'::uuid, 'CVE-2026-00003', 'low',       2.0::real, 'org.example:demo-lib',              '5.3.18',     ARRAY['5.3.18.rhlw-00001', '5.3.18.rhlw-00003']::text[], 'local-dummy-demo-lib-low'),
+    -- blissed:blissed — three levels
+    ('00000000-0000-4000-8000-00000000ad11'::uuid, 'CVE-2026-00011', 'critical',  9.1::real, 'blissed:blissed',                   '1.0-beta-3', ARRAY['1.0-beta-3.rhlw-00001']::text[], 'local-dummy-blissed-critical'),
+    ('00000000-0000-4000-8000-00000000ad12'::uuid, 'CVE-2026-00012', 'important', 7.2::real, 'blissed:blissed',                   '1.0-beta-3', ARRAY['1.0-beta-3.rhlw-00001']::text[], 'local-dummy-blissed-important'),
+    ('00000000-0000-4000-8000-00000000ad13'::uuid, 'CVE-2026-00013', 'moderate',  4.5::real, 'blissed:blissed',                   '1.0-beta-3', ARRAY['1.0-beta-3.rhlw-00001']::text[], 'local-dummy-blissed-moderate'),
+    -- avalon-util:avalon-util-exception — one level
+    ('00000000-0000-4000-8000-00000000ad21'::uuid, 'CVE-2026-00021', 'important', 7.8::real, 'avalon-util:avalon-util-exception', '1.0.0',      ARRAY['1.0.0.rhlw-00001']::text[],      'local-dummy-avalon-important')
+    -- csseed-*:marker — none
+) AS d(uuid, advisory_id, severity, severity_score, package_name, package_version, fixed_versions, checksum)
+ON CONFLICT (uuid) DO UPDATE SET
+    repo_name = EXCLUDED.repo_name,
+    advisory_id = EXCLUDED.advisory_id,
+    severity = EXCLUDED.severity,
+    severity_score = EXCLUDED.severity_score,
+    details = EXCLUDED.details,
+    package_name = EXCLUDED.package_name,
+    package_version = EXCLUDED.package_version,
+    fixed_versions = EXCLUDED.fixed_versions,
+    repository_configuration_uuid = EXCLUDED.repository_configuration_uuid,
+    summary = EXCLUDED.summary,
+    checksum = EXCLUDED.checksum,
+    updated_at = NOW();
+
+-- Drop retired local-dummy rows (e.g. former avalon low) so counts stay exact.
+DELETE FROM lightwell_advisories
+WHERE source = 'local-dummy'
+  AND uuid NOT IN (
+    '00000000-0000-4000-8000-00000000ad01',
+    '00000000-0000-4000-8000-00000000ad02',
+    '00000000-0000-4000-8000-00000000ad03',
+    '00000000-0000-4000-8000-00000000ad04',
+    '00000000-0000-4000-8000-00000000ad11',
+    '00000000-0000-4000-8000-00000000ad12',
+    '00000000-0000-4000-8000-00000000ad13',
+    '00000000-0000-4000-8000-00000000ad21'
+  );
+
+DELETE FROM lightwell_advisory_releases
+WHERE advisory_uuid IN (SELECT uuid FROM lightwell_advisories WHERE source = 'local-dummy');
+
+INSERT INTO lightwell_advisory_releases (
+    advisory_uuid,
+    release_version,
+    rhlw_baseline,
+    rhlw_novel,
+    rhlw_hotfix
+)
+SELECT
+    a.uuid,
+    ver,
+    COALESCE((regexp_match(ver, 'rhlw-(\d+)'))[1]::int, 0),
+    0,
+    0
+FROM lightwell_advisories a
+CROSS JOIN LATERAL unnest(a.fixed_versions) AS ver
+WHERE a.source = 'local-dummy'
+ON CONFLICT (advisory_uuid, release_version) DO NOTHING;
+SQL
+
+  local inserted
+  inserted=$(PGPASSWORD="$DATABASE_PASSWORD" psql \
+    "sslmode=disable dbname=${DATABASE_NAME} user=${DATABASE_USER} host=${DATABASE_HOST} port=${DATABASE_EXTERNAL_PORT}" \
+    -v ON_ERROR_STOP=1 -tA \
+    -c "SELECT COUNT(*) FROM lightwell_advisories WHERE source = 'local-dummy';")
+  if [[ "$inserted" != "8" ]]; then
+    echo "ERROR: Expected 8 dummy advisories, found '${inserted}'. Is ${DUMMY_ADVISORY_REPO_NAME} imported?" >&2
+    exit 1
+  fi
+  echo "    Dummy advisories on ${DUMMY_ADVISORY_REPO_NAME}: demo-lib (4), blissed (3), avalon-util (1), marker (0)."
+}
+
 # ---------------------------------------------------------------------------
 # Step 1: Create lightwell repos under the "lightwell" domain
 # ---------------------------------------------------------------------------
@@ -697,6 +907,12 @@ if [[ "$import_err" -ne 0 ]]; then
   exit 1
 fi
 
+if [[ "$INSERT_ADVISORIES" == true ]]; then
+  insert_dummy_advisories
+else
+  echo ""
+  echo "==> Skipping dummy advisories (pass --with-advisories to insert)."
+fi
 
 # ---------------------------------------------------------------------------
 # Done
@@ -708,3 +924,8 @@ echo ""
 echo "  Auth mode:    $(if [[ -n "$PULP_CLIENT_CERT" ]]; then echo "cert"; else echo "basic"; fi)"
 echo "  Domain:       ${DOMAIN} ($(jq length "${LIGHTWELL_JSON}") repos)"
 echo "  Demo domain:  ${DEMO_DOMAIN} ($(jq length "${LIGHTWELL_DEMO_JSON}") repos)"
+if [[ "$INSERT_ADVISORIES" == true ]]; then
+  echo "  Dummy advisories: ${DUMMY_ADVISORY_REPO_NAME} demo-lib (4) / blissed (3) / avalon-util (1) / marker (0)"
+else
+  echo "  Dummy advisories: skipped (use --with-advisories)"
+fi
