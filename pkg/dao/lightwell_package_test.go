@@ -113,6 +113,40 @@ func (s *LightwellPackageSuite) createLightwellRepoWithOrg(ctx context.Context, 
 	return repoConfigUUID, repoUUID
 }
 
+func (s *LightwellPackageSuite) createLightwellRepo(
+	ctx context.Context,
+	name string,
+	featureName string,
+	securityLevel string,
+	contentType string,
+	basePath string,
+	orgID string,
+) (string, string) {
+	repoUUID := uuid.New().String()
+	repoConfigUUID := uuid.New().String()
+
+	err := db.DB.WithContext(ctx).Exec(`
+		INSERT INTO repositories (uuid, created_at, updated_at, origin, content_type, security_level, published_distribution_base_path)
+		VALUES (?, NOW(), NOW(), ?, ?, ?, ?)`,
+		repoUUID, config.OriginLightwell, contentType, securityLevel, basePath,
+	).Error
+	s.Require().NoError(err)
+
+	err = db.DB.WithContext(ctx).Exec(`
+		INSERT INTO repository_configurations (uuid, created_at, updated_at, name, org_id, repository_uuid, feature_name, arch, versions, snapshot, label)
+		VALUES (?, NOW(), NOW(), ?, ?, ?, ?, 'any', '{any}', false, ?)`,
+		repoConfigUUID, name, orgID, repoUUID, featureName, name,
+	).Error
+	s.Require().NoError(err)
+
+	s.T().Cleanup(func() {
+		_ = db.DB.Exec(`DELETE FROM repository_configurations WHERE uuid = ?`, repoConfigUUID).Error
+		_ = db.DB.Exec(`DELETE FROM repositories WHERE uuid = ?`, repoUUID).Error
+	})
+
+	return repoConfigUUID, repoUUID
+}
+
 func (s *LightwellPackageSuite) createPackageWithVersions(ctx context.Context, repoConfigUUID string, name string, group string, versions []string, releases []string, purls []string) string {
 	pkgUUID := uuid.New().String()
 
@@ -180,6 +214,66 @@ func (s *LightwellPackageSuite) createAdvisory(ctx context.Context, repoConfigUU
 
 func ptr(s string) *string {
 	return &s
+}
+
+func (s *LightwellPackageSuite) TestInternalOnlyListLensCatalog() {
+	ctx, dao := s.dao()
+	suffix := time.Now().UnixNano()
+
+	javaUUID, _ := s.createLightwellRepo(
+		ctx,
+		fmt.Sprintf("lens-java-%d", suffix),
+		"lightwell-maven",
+		"validated",
+		config.ContentTypeMaven,
+		"java/validated",
+		config.LightwellOrg,
+	)
+	pythonUUID, _ := s.createLightwellRepo(
+		ctx,
+		fmt.Sprintf("lens-python-%d", suffix),
+		"lightwell-python",
+		"remediated",
+		config.ContentTypePython,
+		"python/remediated",
+		config.LightwellOrg,
+	)
+	otherUUID, _ := s.createLightwellRepo(
+		ctx,
+		fmt.Sprintf("lens-other-%d", suffix),
+		"lightwell-maven",
+		"validated",
+		config.ContentTypeMaven,
+		"java/other",
+		config.LightwellOrg,
+	)
+
+	s.createPackageWithVersions(
+		ctx, javaUUID, "spring-core", "org.springframework",
+		[]string{"6.1.0"}, []string{""}, []string{"pkg:maven/org.springframework/spring-core@6.1.0"},
+	)
+	s.createPackageWithVersions(
+		ctx, pythonUUID, "flask", "",
+		[]string{"3.0.3"}, []string{""}, []string{"pkg:pypi/flask@3.0.3"},
+	)
+	s.createPackageWithVersions(
+		ctx, otherUUID, "ignored", "com.example",
+		[]string{"1.0.0"}, []string{""}, []string{"pkg:maven/com.example/ignored@1.0.0"},
+	)
+
+	rows, err := dao.InternalOnlyListLensCatalog(ctx, []string{"java/validated", "python/remediated"})
+	s.NoError(err)
+
+	found := map[string]LensCatalogPackageRow{}
+	for _, row := range rows {
+		found[row.Ecosystem+":"+row.Group+":"+row.Name+":"+row.Version] = row
+	}
+	_, hasJava := found["maven:org.springframework:spring-core:6.1.0"]
+	_, hasPython := found["python::flask:3.0.3"]
+	_, hasOther := found["maven:com.example:ignored:1.0.0"]
+	assert.True(s.T(), hasJava)
+	assert.True(s.T(), hasPython)
+	assert.False(s.T(), hasOther)
 }
 
 func (s *LightwellPackageSuite) TestListPackagesAggregatesVersions() {

@@ -12,6 +12,62 @@ import (
 	"github.com/jackc/pgx/v5/pgtype"
 )
 
+const listLensCatalog = `-- name: ListLensCatalog :many
+SELECT
+    r.content_type AS ecosystem,
+    p.package_group,
+    p.name,
+    pv.version,
+    pv.upstream_version
+FROM lightwell_package_versions pv
+         JOIN lightwell_packages p ON p.uuid = pv.lightwell_package_uuid
+         JOIN repository_configurations rc ON rc.uuid = pv.repository_configuration_uuid
+         JOIN repositories r ON r.uuid = rc.repository_uuid
+WHERE rc.org_id = $1::text
+  AND r.origin = 'lightwell'
+  AND r.published_distribution_base_path = ANY($2::text[])
+ORDER BY r.content_type, p.package_group, p.name, pv.version
+`
+
+type ListLensCatalogParams struct {
+	OrgID     string   `json:"org_id"`
+	BasePaths []string `json:"base_paths"`
+}
+
+type ListLensCatalogRow struct {
+	Ecosystem       string `json:"ecosystem"`
+	PackageGroup    string `json:"package_group"`
+	Name            string `json:"name"`
+	Version         string `json:"version"`
+	UpstreamVersion string `json:"upstream_version"`
+}
+
+func (q *Queries) ListLensCatalog(ctx context.Context, arg ListLensCatalogParams) ([]ListLensCatalogRow, error) {
+	rows, err := q.db.Query(ctx, listLensCatalog, arg.OrgID, arg.BasePaths)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	items := []ListLensCatalogRow{}
+	for rows.Next() {
+		var i ListLensCatalogRow
+		if err := rows.Scan(
+			&i.Ecosystem,
+			&i.PackageGroup,
+			&i.Name,
+			&i.Version,
+			&i.UpstreamVersion,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const listLightwellPackageVersions = `-- name: ListLightwellPackageVersions :many
 SELECT
     pv.uuid,
